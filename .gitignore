@@ -1,0 +1,25 @@
+# This is a standard Unity .gitignore file
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# .vs, .vscode, .idea folders
+.vs/
+.vscode/
+.idea/
+
+# Standalone builds
+*.exe
+*.app
+*.apk
+*.aab
+
+# Other
+*.Player
+*.pdb
+*.sln
+*.csproj
