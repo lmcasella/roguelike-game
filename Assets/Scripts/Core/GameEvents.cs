@@ -9,6 +9,9 @@ public static class GameEvents
     // Checkea con '?' si OnPlayerHealthChanged es nulo, o sea si nadie está escuchando
     public static void ReportPlayerHealthChanged(int currentHealth, int maxHealth) => OnPlayerHealthChanged?.Invoke(currentHealth, maxHealth);
 
+    public static event Action<int, int> OnPlayerManaChanged;
+    public static void ReportPlayerManaChanged(int currentMana, int maxMana) => OnPlayerManaChanged?.Invoke(currentMana, maxMana);
+
     public static event Action OnPlayerDied;
     public static void ReportPlayerDied() => OnPlayerDied?.Invoke();
 
