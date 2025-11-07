@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1398731620370961352}
   - component: {fileID: 4136847771259867926}
   m_Layer: 0
-  m_Name: MagicBall_Prefab_Base
+  m_Name: Ability_Prefab_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,4 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f28babb10bb3714ebdf93216a1706a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 0

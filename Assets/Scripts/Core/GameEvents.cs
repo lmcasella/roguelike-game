@@ -19,6 +19,6 @@ public static class GameEvents
     public static event Action OnRoomCleared;
     public static void ReportRoomCleared() => OnRoomCleared?.Invoke();
 
-    public static event Action<int> OnEnemyKilled;
-    public static void ReportEnemyKilled(int scoreValue) => OnEnemyKilled?.Invoke(scoreValue);
+    public static event Action<Enemy, int> OnEnemyDied;
+    public static void ReportEnemyDied(Enemy enemy, int scoreValue) => OnEnemyDied?.Invoke(enemy, scoreValue);
 }

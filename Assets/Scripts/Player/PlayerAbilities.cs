@@ -167,7 +167,7 @@ public class PlayerAbilities : MonoBehaviour
         // --- Si está todo okay, se lanza la habilidad ---
 
         // 1. Gastar mana
-        playerMana.SpendMana(ability.manaCost);
+        playerMana.SpendMana(finalManaCost);
 
         // 2. Set cooldown
         abilityCooldowns[slot] = Time.time + ability.cooldown;

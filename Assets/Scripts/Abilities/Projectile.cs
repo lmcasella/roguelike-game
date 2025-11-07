@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
 
         // Destruir projectil despues de 5 segundos
         //FIXME: En vez de proyectiles deberian ser habilidades con un rango determinado que duren X tiempo, no que sigan de largo por el mapa en una direccion
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 1f);
     }
 
     // Start is called before the first frame update

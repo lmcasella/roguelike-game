@@ -3,7 +3,12 @@ guid: 79ac6ebf2508be34fba7dd183e4a17b3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - firePoint: {instanceID: 0}
+  - startingBasicAttack: {fileID: 11400000, guid: 8e54ac49250cbef4f80e0c9d2b0fef82, type: 2}
+  - startingAbility1: {fileID: 11400000, guid: 961ac08f8ed6e6d4d8731d16f5a232cd, type: 2}
+  - startingAbility2: {instanceID: 0}
+  - startingAbility3: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
