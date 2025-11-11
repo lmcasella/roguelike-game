@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SystemHealth))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Player : MonoBehaviour, IDamageable
 {
     [Header("Health")]
@@ -15,19 +16,45 @@ public class Player : MonoBehaviour, IDamageable
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f;
-
+    [Tooltip("Multiplicador de velocidad mientras ataca (ej: 0.5 = 50% más lento)")]
+    [SerializeField] private float attackSlowdownMultiplier = 0.5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
+
+    [Header("Aiming & Animation")]
+    [SerializeField] private float attackLookDuration = 0.4f; // Cuánto tiempo mira al mouse
+
+    private SpriteRenderer spriteRenderer;
+    private Camera mainCam;
+    private bool isAttacking = false;
+    private float attackLookTimer = 0f;
+    private bool isWalking = false;
+    private bool isWobbling = false;
 
     private void Awake()
     {
         healthComponent = GetComponent<SystemHealth>();
         rb = GetComponent<Rigidbody2D>();
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        mainCam = Camera.main;
+
         if (healthComponent == null )
         {
             Debug.LogError("Player is missing a Health component");
         }
+    }
+
+    // Suscribirse a eventos
+    private void OnEnable()
+    {
+        GameEvents.OnPlayerAttack += HandleAttackAim;
+    }
+
+    // Desuscribirse
+    private void OnDisable()
+    {
+        GameEvents.OnPlayerAttack -= HandleAttackAim;
     }
 
     // Update is called once per frame
@@ -39,17 +66,119 @@ public class Player : MonoBehaviour, IDamageable
 
         moveInput = new Vector2(moveX, moveY).normalized;
 
-        if (Input.GetKeyDown(KeyCode.H))
+        // Chequeo para animación de caminar
+        isWalking = moveInput.magnitude > 0.1f;
+
+        // --- Lógica de Estado (Atacando vs. Moviendo) ---
+        if (isAttacking)
         {
-            healthComponent.DealDamage(10);
+            // 1. SI ESTÁ ATACANDO
+            attackLookTimer -= Time.deltaTime;
+            if (attackLookTimer <= 0)
+            {
+                isAttacking = false;
+            }
+            // (La orientación se maneja en HandleAttackAim y se mantiene)
+        }
+        else
+        {
+            // 2. SI NO ESTÁ ATACANDO (caminando o quieto)
+            // Hacemos que mire en la dirección del movimiento (solo L/R)
+            if (isWalking)
+            {
+                UpdateSpriteFlip(moveInput);
+
+                if (!isWobbling)
+                {
+                    StartCoroutine(WobbleWalk());
+                }
+            }
         }
     }
 
     // Implementar aca fisicas
     private void FixedUpdate()
     {
-        Vector2 newVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
-        rb.velocity = newVelocity;
+        float currentSpeed = moveSpeed;
+        if (isAttacking)
+        {
+            currentSpeed = moveSpeed * attackSlowdownMultiplier;
+        }
+
+        rb.velocity = new Vector2(moveInput.x * currentSpeed, moveInput.y * currentSpeed);
+    }
+
+    // Se llama cada vez que PlayerAbilities lanza un ataque
+    private void HandleAttackAim()
+    {
+        isAttacking = true;
+        attackLookTimer = attackLookDuration; // Setea el timer
+
+        // 1. Obtener dirección del mouse
+        Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookDir = mousePos - rb.position;
+
+        // 2. Orientar el sprite
+        UpdateSpriteFlip(lookDir);
+
+        // 3. ¡"Falsificar" animación de ataque!
+        StartCoroutine(AttackSquashStretch());
+    }
+
+    private void UpdateSpriteFlip(Vector2 direction)
+    {
+        if (direction.x > 0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (direction.x < -0.01f)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+
+    // --- Animaciones "Falsas" (Coroutines) ---
+
+    // "Estirarse" al atacar
+    private IEnumerator AttackSquashStretch()
+    {
+        Vector3 originalScale = transform.localScale;
+        Vector3 stretchScale = new Vector3(originalScale.x * 1.1f, originalScale.y * 0.9f, originalScale.z);
+        Vector3 squashScale = new Vector3(originalScale.x * 0.9f, originalScale.y * 1.1f, originalScale.z);
+
+        float duration = 0.1f;
+
+        // Squash (anticipación)
+        transform.localScale = squashScale;
+        yield return new WaitForSeconds(duration);
+
+        // Stretch (el golpe)
+        transform.localScale = stretchScale;
+        yield return new WaitForSeconds(duration);
+
+        // Volver a la normalidad
+        transform.localScale = originalScale;
+    }
+
+    // Animacion de caminar
+    private IEnumerator WobbleWalk()
+    {
+        if (isWobbling) yield break; // Seguridad extra
+        isWobbling = true;
+
+        float wobbleAngle = 4f; // Qué tanto rota
+        float wobbleTime = 0.1f; // Qué tan rápido lo hace
+
+        // Rota a un lado
+        transform.rotation = Quaternion.Euler(0, 0, wobbleAngle);
+        yield return new WaitForSeconds(wobbleTime);
+        // Rota al otro
+        transform.rotation = Quaternion.Euler(0, 0, -wobbleAngle);
+        yield return new WaitForSeconds(wobbleTime);
+        // Vuelve al centro
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        isWobbling = false; // Permite el siguiente "wobble"
     }
 
     // --- Implementacion del IDamageable ---

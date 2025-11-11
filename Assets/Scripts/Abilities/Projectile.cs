@@ -6,7 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float lifetime = 0.4f;
 
     // Daño final que envia PlayerAbilities
     private int damage;
@@ -19,7 +20,7 @@ public class Projectile : MonoBehaviour
 
         // Destruir projectil despues de 5 segundos
         //FIXME: En vez de proyectiles deberian ser habilidades con un rango determinado que duren X tiempo, no que sigan de largo por el mapa en una direccion
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, lifetime);
     }
 
     // Start is called before the first frame update

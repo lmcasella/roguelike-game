@@ -14,6 +14,7 @@ public class PlayerAbilities : MonoBehaviour
 
     private PlayerMana playerMana;
     private PlayerStats playerStats;
+    private Camera mainCam;
 
     // Diccionarios para guardar las habilidades equipadas y sus cooldowns
     private Dictionary<AbilitySlot, Ability> equippedAbilities = new Dictionary<AbilitySlot, Ability>();
@@ -23,6 +24,7 @@ public class PlayerAbilities : MonoBehaviour
     {
         playerMana = GetComponent<PlayerMana>();
         playerStats = GetComponent<PlayerStats>();
+        mainCam = Camera.main;
     }
 
     // Start is called before the first frame update
@@ -172,10 +174,21 @@ public class PlayerAbilities : MonoBehaviour
         // 2. Set cooldown
         abilityCooldowns[slot] = Time.time + ability.cooldown;
 
+        // Avisar que el player atacó
+        GameEvents.ReportPlayerAttack();
+
+        // Calcular rotacion hacia el mouse
+        Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookDir = mousePos - (Vector2)firePoint.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+
+        // Rotacion a partir de ese angulo
+        Quaternion projectileRotation = Quaternion.Euler(0, 0, angle);
+
         // 3. Lanzar habilidad
         if (ability.projectilePrefab != null)
         {
-            GameObject projObj = Instantiate(ability.projectilePrefab, firePoint.position, firePoint.rotation);
+            GameObject projObj = Instantiate(ability.projectilePrefab, firePoint.position, projectileRotation);
 
             // Le pasamos el daño final al proyectil
             Projectile projScript = projObj.GetComponent<Projectile>();

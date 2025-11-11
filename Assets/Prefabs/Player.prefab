@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6056523050676543691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: -8919298002293762114}
   - component: {fileID: -2813441065956126865}
   - component: {fileID: -4557206077878913822}
+  - component: {fileID: 6908522732409274850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -64,7 +65,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 331.44016, y: 230.15884, z: -3.070505}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3777863670753602360}
@@ -111,8 +112,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.014462441, g: 0.6132076, b: 0.21366295, a: 1}
+  m_Sprite: {fileID: 513969958, guid: 3bf25f0c9a7b21147bfb9eb7217c3082, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -174,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a09cf469de678f4b931523852f967be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 5
 --- !u!114 &-8919298002293762114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,3 +226,15 @@ MonoBehaviour:
   ability2ManaCostBonus: 0
   ability3DamageBonus: 0
   ability3ManaCostBonus: 0
+--- !u!114 &6908522732409274850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004448687142825693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c294d4966bda7d849922ab419a2b0bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
