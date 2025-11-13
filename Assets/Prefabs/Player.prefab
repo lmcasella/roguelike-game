@@ -47,10 +47,9 @@ GameObject:
   - component: {fileID: -8919298002293762114}
   - component: {fileID: -2813441065956126865}
   - component: {fileID: -4557206077878913822}
-  - component: {fileID: 6908522732409274850}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,6 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  attackSlowdownMultiplier: 0.5
+  attackLookDuration: 0.4
 --- !u!114 &-8919298002293762114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,15 +227,3 @@ MonoBehaviour:
   ability2ManaCostBonus: 0
   ability3DamageBonus: 0
   ability3ManaCostBonus: 0
---- !u!114 &6908522732409274850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7004448687142825693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c294d4966bda7d849922ab419a2b0bf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
