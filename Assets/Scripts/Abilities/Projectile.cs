@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifetime = 0.4f;
 
     // Daño final que envia PlayerAbilities
-    private int damage;
+    protected int damage;
 
     private Rigidbody2D rb;
 
@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
         this.damage = damageAmount;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         // 1. Buscar si lo que chocó tiene un sistema de vida
         SystemHealth health = collision.gameObject.GetComponent<SystemHealth>();

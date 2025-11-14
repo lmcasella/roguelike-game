@@ -11,6 +11,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float detectionRange = 10f; // Cuándo empieza a perseguir
     [SerializeField] private float attackRange = 1f;    // Cuándo ataca
 
+    [Header("Combat")]
+    [SerializeField] private float attacksPerSecond = 1f;
+
     [Header("Steering")]
     [SerializeField] private bool useFleeBehavior = false; // Para probar Flee más tarde
 
@@ -19,14 +22,17 @@ public class EnemyAI : MonoBehaviour
     private EnemyState currentState;
 
     // --- Referencias ---
-    private Transform target; // El jugador
+    public Transform target; // El jugador
     private Rigidbody2D rb;
     private Vector2 currentVelocity;
+    private Enemy enemyStats; // Para leer el daño
+    private float nextAttackTime = 0f; // Para controlar el cooldown
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         currentState = EnemyState.Idle;
+        enemyStats = GetComponent<Enemy>();
     }
 
     // Start is called before the first frame update
@@ -111,9 +117,16 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case EnemyState.Attacking:
-                // Se detiene para atacar
+                // 1. Frenar al enemigo para atacar
                 rb.velocity = Vector2.zero;
-                // Aquí llamarías a tu lógica de ataque (disparar/golpear)
+
+                // 2. Intentar atacar (con cooldown)
+                if (Time.time >= nextAttackTime)
+                {
+                    AttackTarget();
+                    // Calcular cuándo es el próximo ataque
+                    nextAttackTime = Time.time + (1f / attacksPerSecond);
+                }
                 break;
 
             case EnemyState.Fleeing:
@@ -122,6 +135,12 @@ public class EnemyAI : MonoBehaviour
                 ApplyForce(fleeForce);
                 break;
         }
+    }
+
+    // Ataque
+    // virtual -> permite que los hijos cambien el metodo
+    protected virtual void AttackTarget() { 
+        Debug.Log("EnemyAI attacked the target.");
     }
 
     // --- Steering Behaviors ---

@@ -12,13 +12,15 @@ public static class GameEvents
     public static event Action<int, int> OnPlayerManaChanged;
     public static void ReportPlayerManaChanged(int currentMana, int maxMana) => OnPlayerManaChanged?.Invoke(currentMana, maxMana);
 
-    public static event Action OnPlayerDied;
-    public static void ReportPlayerDied() => OnPlayerDied?.Invoke();
-
+    // Cuando el jugador ataca
     public static event Action OnPlayerAttack;
     public static void ReportPlayerAttack() => OnPlayerAttack?.Invoke();
 
-    // --- Eventos de Room y game ---
+    // Cuando el jugador muere
+    public static event Action OnPlayerDied;
+    public static void ReportPlayerDied() => OnPlayerDied?.Invoke();
+
+    // --- Eventos de Room y Game ---
     public static event Action OnRoomCleared;
     public static void ReportRoomCleared() => OnRoomCleared?.Invoke();
 

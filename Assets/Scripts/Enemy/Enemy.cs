@@ -10,6 +10,10 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Stats")]
     [SerializeField] private int scoreValue = 10;
 
+    //[Header("Attack")]
+    //[SerializeField] private int attackDamage = 10;
+    //public int AttackDamage => attackDamage; // Propiedad pública para leerlo
+
     private SystemHealth healthComponent;
 
     // private EnemyAI enemyAI;

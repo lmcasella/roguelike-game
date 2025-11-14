@@ -55,5 +55,5 @@ public class SystemHealth : MonoBehaviour
     }
 
     public int GetCurrentHealth() => currentHealth;
-    public int GetMaxHealth() => GetMaxHealth();
+    public int GetMaxHealth() => maxHealth;
 }
