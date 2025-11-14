@@ -21,19 +21,21 @@ public class ExplosiveProjectile : Projectile
 
         foreach (var hitCollider in hitColliders)
         {
-            // Importante: Aquí podrías filtrar para que no dañe a otros enemigos si no quieres
-            SystemHealth health = hitCollider.GetComponent<SystemHealth>();
-            if (health != null)
+            if (hitCollider.CompareTag("Player"))
             {
-                // Usamos la variable 'damage' que heredamos del padre Projectile
-                // (Nota: 'damage' en Projectile.cs debe ser 'protected', no 'private' para verlo aquí.
-                // Si es private, tendrás que usar una función pública o cambiarlo).
+                SystemHealth health = hitCollider.GetComponent<SystemHealth>();
+                if (health != null)
+                {
+                    // Usamos la variable 'damage' que heredamos del padre Projectile
+                    // (Nota: 'damage' en Projectile.cs debe ser 'protected', no 'private' para verlo aquí.
+                    // Si es private, tendrás que usar una función pública o cambiarlo).
 
-                // Si 'damage' es privado en el padre, usa Initialize() al crearlo y asume que ya tiene el valor,
-                // pero para aplicarlo necesitarías acceso.
-                // SOLUCIÓN RÁPIDA: Cambia 'private float damage' a 'protected float damage' en Projectile.cs
+                    // Si 'damage' es privado en el padre, usa Initialize() al crearlo y asume que ya tiene el valor,
+                    // pero para aplicarlo necesitarías acceso.
+                    // SOLUCIÓN RÁPIDA: Cambia 'private float damage' a 'protected float damage' en Projectile.cs
 
-                health.DealDamage(damage); // O el daño que quieras
+                    health.DealDamage(damage); // O el daño que quieras
+                }
             }
         }
 

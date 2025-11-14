@@ -7,7 +7,7 @@ public class SystemHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
 
     private IDamageable target;
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
 
     private void Awake()
     {

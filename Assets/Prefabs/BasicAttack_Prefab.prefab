@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 437912129163648590}
   - component: {fileID: 5231996957191458282}
   - component: {fileID: 4282846918906266521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BasicAttack_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
