@@ -159,7 +159,7 @@ public class PlayerAbilities : MonoBehaviour
         // 6. Asegurarse de que el maná nunca sea negativo
         if (finalManaCost < 0) finalManaCost = 0;
 
-        // 7. Chequeamos Maná usando el costo final
+        // 7. Chequear Maná usando el costo final
         if (!playerMana.HasEnoughMana(finalManaCost))
         {
             Debug.Log("Not enough mana!");

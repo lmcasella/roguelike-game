@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Buscar al jugador una vez al inicio (Asegúrate de que tu Player tenga el Tag "Player")
+        // Buscar al jugador una vez al inicio (Player tiene que tener el tag Player)
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour
                     currentState = EnemyState.Attacking;
                 }
 
-                // Lógica simple para activar Flee (ejemplo: si activas la casilla en el inspector)
+                // Lógica para activar Flee
                 if (useFleeBehavior)
                 {
                     currentState = EnemyState.Fleeing;
@@ -92,7 +92,7 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Fleeing:
                 if (distanceToTarget > detectionRange * 2)
                 {
-                    currentState = EnemyState.Idle; // Ya huyó lo suficiente
+                    currentState = EnemyState.Idle;
                 }
                 break;
         }
@@ -106,7 +106,8 @@ public class EnemyAI : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.Idle:
-                // Se queda quieto (o podrías poner patrullaje aquí)
+                // IDLE
+                // NOTE: Se podria implementar una patrulla
                 rb.velocity = Vector2.zero;
                 break;
 
@@ -165,13 +166,10 @@ public class EnemyAI : MonoBehaviour
 
     private void ApplyForce(Vector2 force)
     {
-        // Para un movimiento tipo arcade simple, asignamos la velocidad directamente.
-        // Si quisieras física realista ("resbalosa"), usarías rb.AddForce(force).
         rb.velocity = force;
     }
 
     // --- Debug Visual (Gizmos) ---
-    // Esto dibuja círculos en el editor para ver los rangos
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

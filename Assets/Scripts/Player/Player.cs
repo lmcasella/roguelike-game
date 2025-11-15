@@ -83,7 +83,7 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             // 2. SI NO ESTÁ ATACANDO (caminando o quieto)
-            // Hacemos que mire en la dirección del movimiento (solo L/R)
+            // Mirar en la dirección del movimiento (solo L/R)
             if (isWalking)
             {
                 UpdateSpriteFlip(moveInput);
@@ -121,7 +121,8 @@ public class Player : MonoBehaviour, IDamageable
         // 2. Orientar el sprite
         UpdateSpriteFlip(lookDir);
 
-        // 3. ¡"Falsificar" animación de ataque!
+        // 3. Animacion de ataque
+        // NOTE: Deberia hacerse en un Animator
         StartCoroutine(AttackSquashStretch());
     }
 
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour, IDamageable
     // Animacion de caminar
     private IEnumerator WobbleWalk()
     {
-        if (isWobbling) yield break; // Seguridad extra
+        if (isWobbling) yield break;
         isWobbling = true;
 
         float wobbleAngle = 4f; // Qué tanto rota

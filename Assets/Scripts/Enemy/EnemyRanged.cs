@@ -13,21 +13,19 @@ public class EnemyRanged : EnemyAI
     {
         if (projectilePrefab != null && firePoint != null && target != null)
         {
-            // 1. Calculamos la dirección hacia el jugador
+            // 1. Calcular la dirección hacia el jugador
             Vector2 direction = target.position - firePoint.position;
 
-            // 2. Calculamos el ángulo. 
-            // IMPORTANTE: El "- 90f" asume que tu sprite de flecha apunta hacia ARRIBA.
-            // Si tu dibujo de flecha apunta a la DERECHA, quita el "- 90f".
+            // 2. Calcular el ángulo
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
 
-            // 3. Convertimos el ángulo en una Rotación
+            // 3. Convertir el ángulo en una Rotación
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
-            // 4. ¡Instanciamos CON esa rotación! (Aquí estaba el error seguramente)
+            // 4. Instanciar el proyectil
             GameObject proj = Instantiate(projectilePrefab, firePoint.position, rotation);
 
-            // 5. Inicializamos el daño
+            // 5. Inicializar el daño
             Projectile projScript = proj.GetComponent<Projectile>();
             if (projScript != null)
             {

@@ -7,7 +7,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] private Sprite openSprite;
-    [SerializeField] private Sprite cloneSprite;
+    [SerializeField] private Sprite closeSprite;
 
     private Collider2D doorCollider;
     private SpriteRenderer spriteRenderer;
@@ -16,6 +16,11 @@ public class Door : MonoBehaviour
     {
         doorCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        spriteRenderer.sprite = closeSprite;
     }
 
     public void Open()
@@ -27,6 +32,6 @@ public class Door : MonoBehaviour
     public void Close()
     {
         doorCollider.enabled = true;
-        spriteRenderer.sprite = cloneSprite;
+        spriteRenderer.sprite = closeSprite;
     }
 }
