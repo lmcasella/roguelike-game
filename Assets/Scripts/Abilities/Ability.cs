@@ -7,6 +7,8 @@ public enum AbilitySlot { Basic, Ability1, Ability2, Ability3 }
 [CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/New Ability")]
 public class Ability : ScriptableObject
 {
+    public AudioClip useSound;
+
     [Header("Info")]
     public string abilityName;
     public string abilityDescription;

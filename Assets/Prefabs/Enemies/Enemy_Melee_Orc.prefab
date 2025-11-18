@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3093996735870272340, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -30,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3311594916220237979, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_Name
-      value: Enemy_Melee_Orc Variant
+      value: Enemy_Melee_Orc
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalScale.x

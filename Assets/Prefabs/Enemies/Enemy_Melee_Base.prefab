@@ -82,9 +82,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  detectionRange: 3
+  detectionRange: 20
   attackRange: 1
   attacksPerSecond: 1
   useFleeBehavior: 0
+  attackChargeTime: 0
+  chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   target: {fileID: 0}
-  damage: 50
+  damage: 20

@@ -17,8 +17,8 @@ public class PlayerAbilities : MonoBehaviour
     private Camera mainCam;
 
     // Diccionarios para guardar las habilidades equipadas y sus cooldowns
-    private Dictionary<AbilitySlot, Ability> equippedAbilities = new Dictionary<AbilitySlot, Ability>();
-    private Dictionary<AbilitySlot, float> abilityCooldowns = new Dictionary<AbilitySlot, float>();
+    private Dictionary<AbilitySlot, Ability> equippedAbilities = new();
+    private Dictionary<AbilitySlot, float> abilityCooldowns = new();
 
     private void Awake()
     {
@@ -195,6 +195,11 @@ public class PlayerAbilities : MonoBehaviour
             if (projScript != null)
             {
                 projScript.Initialize(finalDamage);
+            }
+
+            if (ability.useSound != null)
+            {
+                AudioManager.Instance.PlaySoundEffect(ability.useSound);
             }
         }
 

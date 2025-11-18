@@ -10,6 +10,10 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Stats")]
     [SerializeField] private int scoreValue = 10;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
+
     //[Header("Attack")]
     //[SerializeField] private int attackDamage = 10;
     //public int AttackDamage => attackDamage; // Propiedad pública para leerlo
@@ -31,6 +35,8 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         // Logica especifica del Enemy
         Debug.Log("Enemy took damage");
+
+        if (hurtSound != null) AudioManager.Instance.PlaySoundEffect(hurtSound);
     }
 
     public void Die()
@@ -38,6 +44,9 @@ public class Enemy : MonoBehaviour, IDamageable
         // Logica especifica de muerte del Enemy
         Debug.Log("Enemy died");
         GameEvents.ReportEnemyDied(this, scoreValue);
+
+        if (deathSound != null) AudioManager.Instance.PlaySoundEffect(deathSound);
+
         Destroy(gameObject);
     }
 

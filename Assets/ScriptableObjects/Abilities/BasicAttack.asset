@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6e744097b04ea45aa7ec2ad781a219, type: 3}
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
+  useSound: {fileID: 8300000, guid: 3c386ba9b2a45864cae4e010d74d680f, type: 3}
   abilityName: Corte Arcano
   abilityDescription: 
   slot: 0
-  projectilePrefab: {fileID: 3343291588373904673, guid: f8a0e2fa14d57784f8752014a3ed3bec, type: 3}
+  projectilePrefab: {fileID: 2857326848224228615, guid: ae176cfd449254f4b8ebc62b5a07e31f, type: 3}
   damage: 10
   manaCost: 0
   cooldown: 0.5

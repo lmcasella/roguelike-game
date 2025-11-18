@@ -17,6 +17,10 @@ public class EnemyAI : MonoBehaviour
     [Header("Steering")]
     [SerializeField] private bool useFleeBehavior = false; // Para probar Flee más tarde
 
+    [Header("Combat Feedback")]
+    [SerializeField] private float attackChargeTime = 0.5f;
+    [SerializeField] private Color chargeColor = Color.yellow;
+
     // --- Máquina de Estados ---
     private enum EnemyState { Idle, Chasing, Attacking, Fleeing }
     private EnemyState currentState;
@@ -27,10 +31,14 @@ public class EnemyAI : MonoBehaviour
     private Vector2 currentVelocity;
     private Enemy enemyStats; // Para leer el daño
     private float nextAttackTime = 0f; // Para controlar el cooldown
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    private bool isPreparingAttack = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentState = EnemyState.Idle;
         enemyStats = GetComponent<Enemy>();
     }
@@ -44,6 +52,8 @@ public class EnemyAI : MonoBehaviour
         {
             target = playerObj.transform;
         }
+
+        originalColor = spriteRenderer.color;
     }
 
     // Update is called once per frame
@@ -122,11 +132,9 @@ public class EnemyAI : MonoBehaviour
                 rb.velocity = Vector2.zero;
 
                 // 2. Intentar atacar (con cooldown)
-                if (Time.time >= nextAttackTime)
+                if (Time.time >= nextAttackTime && !isPreparingAttack)
                 {
-                    AttackTarget();
-                    // Calcular cuándo es el próximo ataque
-                    nextAttackTime = Time.time + (1f / attacksPerSecond);
+                    StartCoroutine(AttackSequence());
                 }
                 break;
 
@@ -139,6 +147,28 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Ataque
+    private IEnumerator AttackSequence()
+    {
+        isPreparingAttack = true;
+
+        // 1. INICIO DE CARGA (Feedback Visual)
+        spriteRenderer.color = chargeColor; // Se pone de color (aviso)
+
+        // 2. ESPERA (El tiempo que tiene el jugador para reaccionar)
+        yield return new WaitForSeconds(attackChargeTime);
+
+        // 3. EJECUTAR EL ATAQUE REAL
+        AttackTarget(); // Llama a la función del hijo (Melee o Ranged)
+
+        // 4. RESTAURAR VISUALES
+        spriteRenderer.color = originalColor;
+
+        // 5. CALCULAR COOLDOWN
+        nextAttackTime = Time.time + (1f / attacksPerSecond);
+
+        isPreparingAttack = false;
+    }
+
     // virtual -> permite que los hijos cambien el metodo
     protected virtual void AttackTarget() { 
         Debug.Log("EnemyAI attacked the target.");

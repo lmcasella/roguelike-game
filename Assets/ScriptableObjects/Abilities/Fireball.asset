@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6e744097b04ea45aa7ec2ad781a219, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  useSound: {fileID: 8300000, guid: 71791686b7812e243832b30f0a8b801c, type: 3}
   abilityName: 
   abilityDescription: 
   slot: 1

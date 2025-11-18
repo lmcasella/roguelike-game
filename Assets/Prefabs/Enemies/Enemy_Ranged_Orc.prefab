@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1277160364729539431, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: detectionRange
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1277160364729539431, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: projectileDamage
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1277160364729539431, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: projectilePrefab
@@ -58,11 +58,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.36
+      value: -2.5196679
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.89
+      value: -2.744769
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.z

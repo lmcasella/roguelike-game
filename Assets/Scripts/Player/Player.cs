@@ -24,12 +24,21 @@ public class Player : MonoBehaviour, IDamageable
     [Header("Aiming & Animation")]
     [SerializeField] private float attackLookDuration = 0.4f; // Cuánto tiempo mira al mouse
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
+
+    [Header("Visual Feedback")]
+    [SerializeField] private Color damageColor = Color.red;
+    [SerializeField] private float flashDuration = 0.1f;
+
     private SpriteRenderer spriteRenderer;
     private Camera mainCam;
     private bool isAttacking = false;
     private float attackLookTimer = 0f;
     private bool isWalking = false;
     private bool isWobbling = false;
+    private Color originalColor;
 
     private void Awake()
     {
@@ -43,6 +52,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             Debug.LogError("Player is missing a Health component");
         }
+    }
+
+    private void Start() // Asegúrate de tener Start
+    {
+        originalColor = spriteRenderer.color;
     }
 
     // Suscribirse a eventos
@@ -182,6 +196,18 @@ public class Player : MonoBehaviour, IDamageable
         isWobbling = false; // Permite el siguiente "wobble"
     }
 
+    private IEnumerator DamageFlash()
+    {
+        // 1. Cambiar al color de daño
+        spriteRenderer.color = damageColor;
+
+        // 2. Esperar un instante
+        yield return new WaitForSeconds(flashDuration);
+
+        // 3. Volver al color normal
+        spriteRenderer.color = originalColor;
+    }
+
     // --- Implementacion del IDamageable ---
     public void TakeDamage(int damageAmount)
     {
@@ -190,6 +216,10 @@ public class Player : MonoBehaviour, IDamageable
 
         // Notificar la nueva vida a los suscriptores
         GameEvents.ReportPlayerHealthChanged(healthComponent.GetCurrentHealth(), healthComponent.GetMaxHealth());
+
+        if (hurtSound != null) AudioManager.Instance.PlaySoundEffect(hurtSound);
+
+        StartCoroutine(DamageFlash());
     }
 
     public void Die()
@@ -197,6 +227,9 @@ public class Player : MonoBehaviour, IDamageable
         // Logica especifica de muerte del Player
         Debug.Log("Player has died");
         GameEvents.ReportPlayerDied();
+
+        if (deathSound != null) AudioManager.Instance.PlaySoundEffect(deathSound);
+        
         Destroy(gameObject);
     }
 }

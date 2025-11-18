@@ -112,10 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  detectionRange: 3
+  detectionRange: 20
   attackRange: 1
   attacksPerSecond: 1
   useFleeBehavior: 0
+  attackChargeTime: 0.5
+  chargeColor: {r: 0.29803923, g: 0.5176471, b: 0.015686275, a: 1}
   target: {fileID: 0}
   projectilePrefab: {fileID: 0}
   firePoint: {fileID: 5625715143262610793}
