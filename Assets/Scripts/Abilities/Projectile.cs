@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         // Se mueve hacia adelante
-        rb.velocity = transform.up * speed;   
+        rb.velocity = transform.right * speed;   
     }
 
     // Funcion que PlayerAbilities llama para crear el proyectil a indicar cuanto daño hace

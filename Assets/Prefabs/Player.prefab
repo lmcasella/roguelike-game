@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: -8919298002293762114}
   - component: {fileID: -2813441065956126865}
   - component: {fileID: -4557206077878913822}
+  - component: {fileID: 2043646416718318528}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -226,6 +227,8 @@ MonoBehaviour:
   attackLookDuration: 0.4
   hurtSound: {fileID: 8300000, guid: e53ad0730caef8249aa8b14ce8c630ba, type: 3}
   deathSound: {fileID: 8300000, guid: a5fc127ecd090204099a6d0ef49e5733, type: 3}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.4
 --- !u!114 &-8919298002293762114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,3 +279,24 @@ MonoBehaviour:
   ability2ManaCostBonus: 0
   ability3DamageBonus: 0
   ability3ManaCostBonus: 0
+--- !u!95 &2043646416718318528
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004448687142825693}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83280a1850986274e9b5dcfb73f97fa3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

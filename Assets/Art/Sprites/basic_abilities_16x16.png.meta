@@ -2155,15 +2155,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_abilities_16x16_98
+      name: basic_abilities_bow1
       rect:
         serializedVersion: 2
         x: 160
-        y: 144
+        y: 136
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2176,15 +2176,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_abilities_16x16_99
+      name: basic_abilities_bow2
       rect:
         serializedVersion: 2
         x: 176
-        y: 144
+        y: 133
         width: 16
-        height: 16
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2197,15 +2197,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_abilities_16x16_100
+      name: basic_abilities_bow3
       rect:
         serializedVersion: 2
         x: 192
-        y: 144
+        y: 128
         width: 16
-        height: 16
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2780,69 +2780,6 @@ TextureImporter:
       bones: []
       spriteID: 4f50142ede0706d4f85d7af92fdcd95f
       internalID: -1558262720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basic_abilities_16x16_128
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65edc8986b7106648ae4a5cff3805dee
-      internalID: -1199421985
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basic_abilities_16x16_129
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 128
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf9697eb1c15fe54880ae07b8924946c
-      internalID: 1206056245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basic_abilities_16x16_130
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 128
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dcfc8b79489bc054ba2632f213a69f64
-      internalID: 1548475659
       vertices: []
       indices: 
       edges: []
@@ -7884,7 +7821,6 @@ TextureImporter:
       basic_abilities_16x16_0: 282182434
       basic_abilities_16x16_1: -1597494312
       basic_abilities_16x16_10: -1088681575
-      basic_abilities_16x16_100: 416968120
       basic_abilities_16x16_101: 2105883344
       basic_abilities_16x16_102: -1081412644
       basic_abilities_16x16_103: -1934384659
@@ -8241,12 +8177,13 @@ TextureImporter:
       basic_abilities_16x16_95: -1930519236
       basic_abilities_16x16_96: -767467707
       basic_abilities_16x16_97: -69340676
-      basic_abilities_16x16_98: -111884248
-      basic_abilities_16x16_99: -1054052778
       basic_abilities_ball1: -983344494
       basic_abilities_ball2: -1794424774
       basic_abilities_ball3: 452892265
       basic_abilities_ball4: -1050508042
+      basic_abilities_bow1: -111884248
+      basic_abilities_bow2: -1054052778
+      basic_abilities_bow3: 416968120
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

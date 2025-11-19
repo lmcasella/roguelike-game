@@ -12,6 +12,8 @@ public class PlayerMana : MonoBehaviour
     void Start()
     {
         currentMana = maxMana;
+
+        GameEvents.ReportPlayerManaChanged(currentMana, maxMana);
     }
 
     // Update is called once per frame

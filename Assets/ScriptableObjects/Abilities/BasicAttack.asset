@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: Corte Arcano
   abilityDescription: 
   slot: 0
-  projectilePrefab: {fileID: 2857326848224228615, guid: ae176cfd449254f4b8ebc62b5a07e31f, type: 3}
+  projectilePrefab: {fileID: 7035612327740694885, guid: 04d666dc347b9344bbf46d7a54aa0a59, type: 3}
   damage: 10
   manaCost: 0
   cooldown: 0.5

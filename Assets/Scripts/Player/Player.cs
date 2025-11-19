@@ -37,8 +37,8 @@ public class Player : MonoBehaviour, IDamageable
     private bool isAttacking = false;
     private float attackLookTimer = 0f;
     private bool isWalking = false;
-    private bool isWobbling = false;
     private Color originalColor;
+    private Animator animator;
 
     private void Awake()
     {
@@ -47,6 +47,8 @@ public class Player : MonoBehaviour, IDamageable
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         mainCam = Camera.main;
+
+        animator = GetComponent<Animator>();
 
         if (healthComponent == null )
         {
@@ -101,12 +103,9 @@ public class Player : MonoBehaviour, IDamageable
             if (isWalking)
             {
                 UpdateSpriteFlip(moveInput);
-
-                if (!isWobbling)
-                {
-                    StartCoroutine(WobbleWalk());
-                }
             }
+
+            animator.SetBool("IsWalking", isWalking);
         }
     }
 
@@ -173,27 +172,6 @@ public class Player : MonoBehaviour, IDamageable
 
         // Volver a la normalidad
         transform.localScale = originalScale;
-    }
-
-    // Animacion de caminar
-    private IEnumerator WobbleWalk()
-    {
-        if (isWobbling) yield break;
-        isWobbling = true;
-
-        float wobbleAngle = 4f; // Qué tanto rota
-        float wobbleTime = 0.1f; // Qué tan rápido lo hace
-
-        // Rota a un lado
-        transform.rotation = Quaternion.Euler(0, 0, wobbleAngle);
-        yield return new WaitForSeconds(wobbleTime);
-        // Rota al otro
-        transform.rotation = Quaternion.Euler(0, 0, -wobbleAngle);
-        yield return new WaitForSeconds(wobbleTime);
-        // Vuelve al centro
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        isWobbling = false; // Permite el siguiente "wobble"
     }
 
     private IEnumerator DamageFlash()

@@ -180,7 +180,7 @@ public class PlayerAbilities : MonoBehaviour
         // Calcular rotacion hacia el mouse
         Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookDir = mousePos - (Vector2)firePoint.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
         // Rotacion a partir de ese angulo
         Quaternion projectileRotation = Quaternion.Euler(0, 0, angle);
