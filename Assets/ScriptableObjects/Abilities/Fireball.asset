@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6e744097b04ea45aa7ec2ad781a219, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: c862aad0656e8d640a8b2149d8f41e46, type: 3}
   useSound: {fileID: 8300000, guid: 71791686b7812e243832b30f0a8b801c, type: 3}
-  abilityName: 
-  abilityDescription: 
+  abilityName: Bola de Fuego
+  abilityDescription: "Bola poderosa de fuego que hace una gran cantidad de da\xF1o."
   slot: 1
   projectilePrefab: {fileID: 2165508446026496265, guid: 607d8da654c900e4ba45e885b0262e7d, type: 3}
   damage: 20

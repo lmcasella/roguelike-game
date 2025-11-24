@@ -23,6 +23,12 @@ public class Door : MonoBehaviour
         spriteRenderer.sprite = closeSprite;
     }
 
+    public void Interact(Player player)
+    {
+        // Las puertas se abren automáticamente al limpiar la sala
+        Debug.Log("La puerta está cerrada. Debes limpiar la sala para abrirla.");
+    }
+
     public void Open()
     {
         doorCollider.enabled = false;

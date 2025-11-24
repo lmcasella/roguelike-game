@@ -7,6 +7,7 @@ public class PlayerMana : MonoBehaviour
     [SerializeField] private int maxMana = 100;
 
     private int currentMana;
+    private bool isInfinite = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,21 +40,40 @@ public class PlayerMana : MonoBehaviour
     // Checkear si el jugador tiene suficiente mana para tirar una habilidad
     public bool HasEnoughMana(int manaCost)
     {
+        if (isInfinite) return true;
         return currentMana >= manaCost;
     }
 
     // Gastar mana. Debe llamarse despues de checkear si tiene suficiente mana
-    public void SpendMana(int manaCost)
+    public bool SpendMana(int manaCost)
     {
+        if (isInfinite) return true;
+
         currentMana -= manaCost;
 
-        if (currentMana < 0)
+        // Verificar si alcanza el mana
+        if (currentMana >= manaCost)
         {
-            currentMana = 0;
+            currentMana -= manaCost;
+            // Notificar nuevo mana
+            GameEvents.ReportPlayerManaChanged(currentMana, maxMana);
+            return true;
         }
 
-        // Notificar nuevo mana
-        GameEvents.ReportPlayerManaChanged(currentMana, maxMana);
+        // No alcanza
+        return false;
+    }
+
+    public IEnumerator ActivateInfiniteMana(float duration)
+    {
+        isInfinite = true;
+        // Opcional: Feedback visual (ej. cambiar color de la barra)
+        Debug.Log("¡MANÁ INFINITO ACTIVADO!");
+
+        yield return new WaitForSeconds(duration);
+
+        isInfinite = false;
+        Debug.Log("Fin del Maná Infinito");
     }
 
     // Incrementar el mana maximo (ej. upgrade)

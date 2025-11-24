@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamageable
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f;
+    private float currentSpeedMultiplier = 1f;
     [Tooltip("Multiplicador de velocidad mientras ataca (ej: 0.5 = 50% más lento)")]
     [SerializeField] private float attackSlowdownMultiplier = 0.5f;
     private Rigidbody2D rb;
@@ -112,13 +113,14 @@ public class Player : MonoBehaviour, IDamageable
     // Implementar aca fisicas
     private void FixedUpdate()
     {
-        float currentSpeed = moveSpeed;
+        float finalSpeed = moveSpeed * currentSpeedMultiplier;
+
         if (isAttacking)
         {
-            currentSpeed = moveSpeed * attackSlowdownMultiplier;
+            finalSpeed *= attackSlowdownMultiplier;
         }
 
-        rb.velocity = new Vector2(moveInput.x * currentSpeed, moveInput.y * currentSpeed);
+        rb.velocity = new Vector2(moveInput.x * finalSpeed, moveInput.y * finalSpeed);
     }
 
     // Se llama cada vez que PlayerAbilities lanza un ataque
@@ -184,6 +186,20 @@ public class Player : MonoBehaviour, IDamageable
 
         // 3. Volver al color normal
         spriteRenderer.color = originalColor;
+    }
+
+    // --- Boosts ---
+    public IEnumerator ActivateSpeedBoost(float multiplier, float duration)
+    {
+        currentSpeedMultiplier = multiplier;
+
+        // Efecto visual: Tinte amarillo (Flash style)
+        spriteRenderer.color = Color.yellow;
+
+        yield return new WaitForSeconds(duration);
+
+        currentSpeedMultiplier = 1f;
+        spriteRenderer.color = originalColor; // Volvemos al color normal
     }
 
     // --- Implementacion del IDamageable ---

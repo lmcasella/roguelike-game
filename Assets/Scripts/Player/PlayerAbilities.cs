@@ -72,6 +72,9 @@ public class PlayerAbilities : MonoBehaviour
         // con equippedAbilities[ability.slot] = ability; le decimos el slot que 'ability' tiene asignado buscalo en el diccionario 'equippedAbilities' y asigna la habilidad a esa key
         equippedAbilities[ability.slot] = ability;
         abilityCooldowns[ability.slot] = Time.time;
+
+        GameEvents.ReportAbilityEquipped(ability.slot, ability);
+
         Debug.Log($"Equipped {ability.abilityName} in {ability.slot}");
     }
 
@@ -169,39 +172,49 @@ public class PlayerAbilities : MonoBehaviour
         // --- Si está todo okay, se lanza la habilidad ---
 
         // 1. Gastar mana
-        playerMana.SpendMana(finalManaCost);
-
-        // 2. Set cooldown
-        abilityCooldowns[slot] = Time.time + ability.cooldown;
-
-        // Avisar que el player atacó
-        GameEvents.ReportPlayerAttack();
-
-        // Calcular rotacion hacia el mouse
-        Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 lookDir = mousePos - (Vector2)firePoint.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-
-        // Rotacion a partir de ese angulo
-        Quaternion projectileRotation = Quaternion.Euler(0, 0, angle);
-
-        // 3. Lanzar habilidad
-        if (ability.projectilePrefab != null)
+        if (playerMana.SpendMana(finalManaCost))
         {
-            GameObject projObj = Instantiate(ability.projectilePrefab, firePoint.position, projectileRotation);
+            // 2. Set cooldown
+            abilityCooldowns[slot] = Time.time + ability.cooldown;
 
-            // Le pasamos el daño final al proyectil
-            Projectile projScript = projObj.GetComponent<Projectile>();
-            if (projScript != null)
-            {
-                projScript.Initialize(finalDamage);
-            }
+            // Avisar a la UI para el efecto visual de cd
+            GameEvents.ReportAbilityCooldownStarted(slot, ability.cooldown);
 
-            if (ability.useSound != null)
+            // Avisar que el player atacó
+            GameEvents.ReportPlayerAttack();
+
+            // Calcular rotacion hacia el mouse
+            Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 lookDir = mousePos - (Vector2)firePoint.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+
+            // Rotacion a partir de ese angulo
+            Quaternion projectileRotation = Quaternion.Euler(0, 0, angle);
+
+            // 3. Lanzar habilidad
+            if (ability.projectilePrefab != null)
             {
-                AudioManager.Instance.PlaySoundEffect(ability.useSound);
+                GameObject projObj = Instantiate(ability.projectilePrefab, firePoint.position, projectileRotation);
+
+                // Le pasamos el daño final al proyectil
+                Projectile projScript = projObj.GetComponent<Projectile>();
+                if (projScript != null)
+                {
+                    projScript.Initialize(finalDamage);
+                }
+
+                if (ability.useSound != null)
+                {
+                    AudioManager.Instance.PlaySoundEffect(ability.useSound);
+                }
             }
         }
+        else
+        {
+            Debug.Log("Failed to spend mana!");
+            return;
+        }
+
 
         Debug.Log($"Used ability: {ability.abilityName} (Dmg: {finalDamage}, Cost: {finalManaCost})");
     }

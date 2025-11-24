@@ -7,11 +7,13 @@ public enum AbilitySlot { Basic, Ability1, Ability2, Ability3 }
 [CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/New Ability")]
 public class Ability : ScriptableObject
 {
+    [Header("Visual")]
+    public Sprite icon;
     public AudioClip useSound;
 
     [Header("Info")]
     public string abilityName;
-    public string abilityDescription;
+    [TextArea] public string abilityDescription;
     public AbilitySlot slot;
 
     [Header("Stats")]

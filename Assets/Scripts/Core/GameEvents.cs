@@ -26,4 +26,13 @@ public static class GameEvents
 
     public static event Action<Enemy, int> OnEnemyDied;
     public static void ReportEnemyDied(Enemy enemy, int scoreValue) => OnEnemyDied?.Invoke(enemy, scoreValue);
+
+    // --- Eventos de Habilidades ---
+    // Avisa que cambió la habilidad en un slot (para poner el icono nuevo)
+    public static event Action<AbilitySlot, Ability> OnAbilityEquipped;
+    public static void ReportAbilityEquipped(AbilitySlot slot, Ability ability) => OnAbilityEquipped?.Invoke(slot, ability);
+
+    // Avisa que se usó una habilidad y empezó su cooldown
+    public static event Action<AbilitySlot, float> OnAbilityCooldownStarted;
+    public static void ReportAbilityCooldownStarted(AbilitySlot slot, float duration) => OnAbilityCooldownStarted?.Invoke(slot, duration);
 }

@@ -1861,7 +1861,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_84
+      name: chest_close
       rect:
         serializedVersion: 2
         x: 0
@@ -1882,7 +1882,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_85
+      name: chest_open
       rect:
         serializedVersion: 2
         x: 32
@@ -2795,6 +2795,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      chest_close: -1140315589
+      chest_open: -1190522672
       tiles_0: -2112509216
       tiles_1: 1576274662
       tiles_100: 1234117391
@@ -2899,8 +2901,6 @@ TextureImporter:
       tiles_81: -945839128
       tiles_82: 597979622
       tiles_83: 561598344
-      tiles_84: -1140315589
-      tiles_85: -1190522672
       tiles_86: 867206926
       tiles_87: -2083664032
       tiles_88: 1170244785

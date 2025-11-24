@@ -54,6 +54,25 @@ public class SystemHealth : MonoBehaviour
         }
     }
 
+    public void Heal(int healAmount)
+    {
+        if (healAmount < 0) return;
+
+        if (currentHealth <= 0) return; // No puede curarse si esta muerto
+
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        // Notificar la nueva vida a los suscriptores
+        if (gameObject.CompareTag("Player"))
+        {
+            GameEvents.ReportPlayerHealthChanged(currentHealth, maxHealth);
+        }
+    }
+
     public int GetCurrentHealth() => currentHealth;
     public int GetMaxHealth() => maxHealth;
 }
