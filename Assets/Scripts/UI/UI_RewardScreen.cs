@@ -6,10 +6,10 @@ public class UI_RewardScreen : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private GameObject rewardPanel; // Panel que se muestra/oculta
-    [SerializeField] private PlayerStats playerStats; // Prefab de Player
+    [SerializeField] private GameObject playerObject; // Prefab de Player
 
     [Header("Logica de Recompensa")]
-    [SerializeField] private List<AbilityUpgrade> posibleUpgrades; // Todas las mejoras
+    [SerializeField] private List<UpgradeEffect> posibleUpgrades; // Todas las mejoras
 
     // Cards para seleccionar la mejora
     [SerializeField] private UI_UpgradeCard card1;
@@ -17,7 +17,7 @@ public class UI_RewardScreen : MonoBehaviour
     [SerializeField] private UI_UpgradeCard card3;
 
     // Lista de las 3 opciones de mejora que luego se aplican a los botones individualmente
-    private List<AbilityUpgrade> displayedUpgrades = new List<AbilityUpgrade>();
+    private List<UpgradeEffect> displayedUpgrades = new List<UpgradeEffect>();
 
     private void OnEnable()
     {
@@ -37,9 +37,9 @@ public class UI_RewardScreen : MonoBehaviour
         rewardPanel.SetActive(false);
 
         // Buscar al PlayerStats si no esta asignado
-        if (playerStats == null)
+        if (playerObject == null)
         {
-            playerStats = FindObjectOfType<PlayerStats>();
+            playerObject = GameObject.FindGameObjectWithTag("Player");
         }
     }
 
@@ -53,28 +53,30 @@ public class UI_RewardScreen : MonoBehaviour
 
         displayedUpgrades.Clear();
 
-        //FIXME: Seleccion aleatoria de mejoras. Deberia haber una logica para que nunca se repitan?
-        //NOTE: Agregar a la pantalla de mejoras una mejora de la lista disponible, que esté entre la posicion 0 y el total de la lista
-        displayedUpgrades.Add(posibleUpgrades[Random.Range(0, posibleUpgrades.Count)]);
-        displayedUpgrades.Add(posibleUpgrades[Random.Range(0, posibleUpgrades.Count)]);
-        displayedUpgrades.Add(posibleUpgrades[Random.Range(0, posibleUpgrades.Count)]);
+        // Lógica simple para elegir 3 al azar
+        for (int i = 0; i < 3; i++)
+        {
+            if (posibleUpgrades.Count > 0)
+            {
+                displayedUpgrades.Add(posibleUpgrades[Random.Range(0, posibleUpgrades.Count)]);
+            }
+        }
 
-        // Configurar las cards de la UI con las mejoras asignadas antes
-        card1.Setup(displayedUpgrades[0], this);
-        card2.Setup(displayedUpgrades[1], this);
-        card3.Setup(displayedUpgrades[2], this);
+        // Setup de las cartas (verificando que existan)
+        if (displayedUpgrades.Count > 0) card1.Setup(displayedUpgrades[0], this);
+        if (displayedUpgrades.Count > 1) card2.Setup(displayedUpgrades[1], this);
+        if (displayedUpgrades.Count > 2) card3.Setup(displayedUpgrades[2], this);
     }
 
     // Funcion que se ejecuta al tocar alguna de las cards de mejoras
-    public void OnRewardChosen(AbilityUpgrade chosenUpgrade)
+    public void OnRewardChosen(UpgradeEffect chosenUpgrade)
     {
-        // Aplicar mejora
-        playerStats.ApplyUpgrade(chosenUpgrade);
+        if (playerObject != null)
+        {
+            chosenUpgrade.Apply(playerObject);
+        }
 
-        // Ocultar panel de recompensas
         rewardPanel.SetActive(false);
-
-        // Reanudar juego
         Time.timeScale = 1f;
     }
 }

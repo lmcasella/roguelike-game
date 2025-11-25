@@ -85,4 +85,9 @@ public class PlayerMana : MonoBehaviour
         // Notificar nuevo mana
         GameEvents.ReportPlayerManaChanged(currentMana, maxMana);
     }
+
+    public int GetCurrentMana() => currentMana;
+    public int GetMaxMana() => maxMana;
+    public void SetMaxMana(int value) { maxMana = value; }
+    public void SetMana(int value) { currentMana = value; }
 }

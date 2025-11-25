@@ -9,7 +9,7 @@ public class UI_UpgradeCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Button button;
 
-    private AbilityUpgrade myUpgrade;
+    private UpgradeEffect myUpgrade;
     private UI_RewardScreen rewardManager;
 
     private void Awake()
@@ -18,7 +18,7 @@ public class UI_UpgradeCard : MonoBehaviour
     }
 
     // Configurar card de mejora
-    public void Setup(AbilityUpgrade upgrade, UI_RewardScreen manager)
+    public void Setup(UpgradeEffect upgrade, UI_RewardScreen manager)
     {
         myUpgrade = upgrade;
         rewardManager = manager;

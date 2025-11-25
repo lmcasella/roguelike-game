@@ -25,6 +25,12 @@ public class Player : MonoBehaviour, IDamageable
     [Header("Aiming & Animation")]
     [SerializeField] private float attackLookDuration = 0.4f; // Cuánto tiempo mira al mouse
 
+    [Header("Dash Settings")]
+    [SerializeField] private float dashSpeed = 20f;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashCooldown = 1f;
+    [SerializeField] private bool isInvincibleDuringDash = true;
+
     [Header("Audio")]
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip deathSound;
@@ -40,6 +46,9 @@ public class Player : MonoBehaviour, IDamageable
     private bool isWalking = false;
     private Color originalColor;
     private Animator animator;
+
+    private bool canDash = true;
+    private bool isDashing = false;
 
     private void Awake()
     {
@@ -60,6 +69,38 @@ public class Player : MonoBehaviour, IDamageable
     private void Start() // Asegúrate de tener Start
     {
         originalColor = spriteRenderer.color;
+
+        if (GameManager.Instance.LoadPlayerState(
+            out int hp,
+            out int maxHp,
+            out int mp,
+            out int maxMp,
+            out int dmgBonus,
+            out int extraProj))
+        {
+            // 1. Aplicar Vida
+            // Asegúrate de tener SetMaxHealth en SystemHealth
+            healthComponent.SetMaxHealth(maxHp);
+            healthComponent.SetHealth(hp);
+
+            // 2. Aplicar Maná
+            var manaComp = GetComponent<PlayerMana>();
+            manaComp.SetMaxMana(maxMp); // Necesitas crear este método
+            manaComp.SetMana(mp);       // Necesitas crear este método
+
+            // 3. Aplicar Stats de Ataque
+            var statsComp = GetComponent<PlayerStats>();
+            statsComp.basicDamageBonus = dmgBonus;
+            statsComp.basicExtraProjectiles = extraProj;
+
+            // 4. (Opcional) Re-aplicar Upgrades especiales
+            if (GameManager.Instance.hasVampirePerk)
+            {
+                gameObject.AddComponent<VampireBehaviour>();
+            }
+
+            Debug.Log("Player Stats loaded from GameManager");
+        }
     }
 
     // Suscribirse a eventos
@@ -108,11 +149,19 @@ public class Player : MonoBehaviour, IDamageable
 
             animator.SetBool("IsWalking", isWalking);
         }
+
+        // Input de Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && moveInput != Vector2.zero)
+        {
+            StartCoroutine(DashRoutine());
+        }
     }
 
     // Implementar aca fisicas
     private void FixedUpdate()
     {
+        if (isDashing) return;
+
         float finalSpeed = moveSpeed * currentSpeedMultiplier;
 
         if (isAttacking)
@@ -120,7 +169,8 @@ public class Player : MonoBehaviour, IDamageable
             finalSpeed *= attackSlowdownMultiplier;
         }
 
-        rb.velocity = new Vector2(moveInput.x * finalSpeed, moveInput.y * finalSpeed);
+        float currentSpeed = isAttacking ? moveSpeed * attackSlowdownMultiplier : moveSpeed;
+        rb.velocity = moveInput * currentSpeed;
     }
 
     // Se llama cada vez que PlayerAbilities lanza un ataque
@@ -151,6 +201,32 @@ public class Player : MonoBehaviour, IDamageable
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    // --- Corrutina del Dash ---
+    private IEnumerator DashRoutine()
+    {
+        isDashing = true;
+        canDash = false;
+
+        // 1. Guardar velocidad del dash
+        rb.velocity = moveInput.normalized * dashSpeed;
+
+        // 2. Invulnerabilidad: Cambiar Layer a uno que no choque con proyectiles/enemigos
+        int originalLayer = gameObject.layer;
+        if (isInvincibleDuringDash) gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+        // 3. Esperar duración
+        yield return new WaitForSeconds(dashDuration);
+
+        // 4. Terminar Dash
+        isDashing = false;
+        rb.velocity = Vector2.zero;
+        if (isInvincibleDuringDash) gameObject.layer = originalLayer;
+
+        // 5. Cooldown
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     // --- Animaciones "Falsas" (Coroutines) ---

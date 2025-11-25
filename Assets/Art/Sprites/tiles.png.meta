@@ -1651,7 +1651,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_74
+      name: step_down
       rect:
         serializedVersion: 2
         x: 224
@@ -1672,7 +1672,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_75
+      name: step_up
       rect:
         serializedVersion: 2
         x: 256
@@ -2797,6 +2797,8 @@ TextureImporter:
     nameFileIdTable:
       chest_close: -1140315589
       chest_open: -1190522672
+      step_down: -1669481371
+      step_up: 1700650354
       tiles_0: -2112509216
       tiles_1: 1576274662
       tiles_100: 1234117391
@@ -2890,8 +2892,6 @@ TextureImporter:
       tiles_71: 213600698
       tiles_72: -1357546272
       tiles_73: 91948884
-      tiles_74: -1669481371
-      tiles_75: 1700650354
       tiles_76: 2127151227
       tiles_77: -695725935
       tiles_78: -1177378368

@@ -101,6 +101,30 @@ public class SystemHealth : MonoBehaviour
         }
     }
 
+    public void ModifyMaxHealth(int amount)
+    {
+        maxHealth += amount;
+
+        if (maxHealth < 1)
+        {
+            maxHealth = 1; // Asegurarse de que la vida máxima no sea menor a 1
+        }
+
+        // Ajustar la vida actual si excede la nueva vida máxima
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        // Notificar la nueva vida a los suscriptores
+        if (gameObject.CompareTag("Player"))
+        {
+            GameEvents.ReportPlayerHealthChanged(currentHealth, maxHealth);
+        }
+    }
+
     public int GetCurrentHealth() => currentHealth;
     public int GetMaxHealth() => maxHealth;
+    public void SetMaxHealth(int value) { maxHealth = value; }
+    public void SetHealth(int value) { currentHealth = value; }
 }

@@ -162,7 +162,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Ataque
-    private IEnumerator AttackSequence()
+    protected virtual IEnumerator AttackSequence()
     {
         isPreparingAttack = true;
 

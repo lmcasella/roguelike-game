@@ -433,7 +433,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_16
+      name: deadPriest_ranged
       rect:
         serializedVersion: 2
         x: 32
@@ -475,7 +475,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_18
+      name: archer_ranged
       rect:
         serializedVersion: 2
         x: 32
@@ -517,10 +517,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_20
+      name: dkCharge_Melee
       rect:
         serializedVersion: 2
-        x: 96
+        x: 95
         y: 256
         width: 32
         height: 32
@@ -559,7 +559,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_22
+      name: finalBoss_minion1
       rect:
         serializedVersion: 2
         x: 160
@@ -664,7 +664,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_27
+      name: finalBoss_minion2
       rect:
         serializedVersion: 2
         x: 128
@@ -1357,7 +1357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_60
+      name: finalBoss
       rect:
         serializedVersion: 2
         x: 32
@@ -1451,6 +1451,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      archer_ranged: 1282251880
+      deadPriest_ranged: 1517358206
+      dkCharge_Melee: 1257108986
+      finalBoss: -720075835
+      finalBoss_minion1: 1123714673
+      finalBoss_minion2: -1463437878
       monsters_0: -420399991
       monsters_10: 1629389945
       monsters_11: -640271389
@@ -1458,19 +1464,14 @@ TextureImporter:
       monsters_13: 545936827
       monsters_14: -616273854
       monsters_15: 466741568
-      monsters_16: 1517358206
       monsters_17: -74301875
-      monsters_18: 1282251880
       monsters_19: 858895188
       monsters_2: 1048709586
-      monsters_20: 1257108986
       monsters_21: -485251224
-      monsters_22: 1123714673
       monsters_23: -208445322
       monsters_24: 840736164
       monsters_25: 1658109761
       monsters_26: -322300540
-      monsters_27: -1463437878
       monsters_28: -1833248321
       monsters_29: -857229964
       monsters_30: 800789270
@@ -1506,7 +1507,6 @@ TextureImporter:
       monsters_58: 1286614154
       monsters_59: -231982270
       monsters_6: -990944005
-      monsters_60: -720075835
       monsters_61: 1517838496
       monsters_62: -161057108
       monsters_63: 1331832356
