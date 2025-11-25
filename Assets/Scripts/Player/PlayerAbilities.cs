@@ -97,13 +97,13 @@ public class PlayerAbilities : MonoBehaviour
         }
 
         // Ability 2 (W)
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             TryUseAbility(AbilitySlot.Ability2);
         }
 
         // Ability 3 (E)
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             TryUseAbility(AbilitySlot.Ability3);
         }

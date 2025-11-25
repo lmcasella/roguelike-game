@@ -10,6 +10,16 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Stats")]
     [SerializeField] private int scoreValue = 10;
 
+    [Header("Loot System")]
+    [Tooltip("Probabilidad de soltar un objeto (0 a 100%)")]
+    [Range(0, 100)][SerializeField] private float dropChance = 30f;
+
+    [Tooltip("Objeto Loot_Item")]
+    [SerializeField] private GameObject lootPrefab;
+
+    [Tooltip("Lista de posibles buffs que puede soltar este enemigo")]
+    [SerializeField] private List<BuffEffect> possibleDrops;
+
     [Header("Audio")]
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip deathSound;
@@ -43,6 +53,9 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         // Logica especifica de muerte del Enemy
         Debug.Log("Enemy died");
+
+        TryDropLoot();
+
         GameEvents.ReportEnemyDied(this, scoreValue);
 
         if (deathSound != null) AudioManager.Instance.PlaySoundEffect(deathSound);
@@ -50,9 +63,38 @@ public class Enemy : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TryDropLoot()
     {
-        
+        // Validaciones
+        if (lootPrefab == null) return;
+        if (possibleDrops == null || possibleDrops.Count == 0) return;
+
+        // --- TIRAR DADOS ---
+        // Generamos un número entre 0 y 100. Si es menor que dropChance, dropea.
+        float randomValue = Random.Range(0f, 100f);
+
+        if (randomValue <= dropChance)
+        {
+            // 1. Elegir un buff al azar de la lista
+            BuffEffect selectedBuff = possibleDrops[Random.Range(0, possibleDrops.Count)];
+
+            // 2. Instanciar el objeto en la posición del enemigo
+            GameObject lootObj = Instantiate(lootPrefab, transform.position, Quaternion.identity);
+
+            Rigidbody2D lootRb = lootObj.GetComponent<Rigidbody2D>();
+            if (lootRb != null) // Asegúrate de que tu Loot_Item tenga un RB (Kinematic o Dynamic con drag alto)
+            {
+                Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(0.5f, 1f)).normalized;
+                lootRb.AddForce(randomDir * 3f, ForceMode2D.Impulse);
+            }
+
+            // 3. Inicializarlo
+            // FIXME: Esto cambia el SPRITE al icono del buff. Deberia poner un icono del item
+            LootPickup pickupScript = lootObj.GetComponent<LootPickup>();
+            if (pickupScript != null)
+            {
+                pickupScript.Initialize(selectedBuff);
+            }
+        }
     }
 }

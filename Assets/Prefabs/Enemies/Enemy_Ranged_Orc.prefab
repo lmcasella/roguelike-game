@@ -24,6 +24,34 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 3343291588373904673, guid: b3314e58e61786e498fccdb3e3331099, type: 3}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: dropChance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: possibleDrops.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: possibleDrops.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 31d5bd15699200f4eb73c7f014e7f579, type: 2}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: possibleDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f3e284f33fe7a6941bd6d076af39d495, type: 2}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: possibleDrops.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a640235aa0f5394695b00a1e96e8070, type: 2}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: possibleDrops.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 384d461c870b0a543ac61ea07cb3248a, type: 2}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: possibleDrops.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a640235aa0f5394695b00a1e96e8070, type: 2}
     - target: {fileID: 8898530146547866417, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_Sprite
       value: 

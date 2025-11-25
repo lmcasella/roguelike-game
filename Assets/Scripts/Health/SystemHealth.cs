@@ -54,6 +54,34 @@ public class SystemHealth : MonoBehaviour
         }
     }
 
+    public void Regenerate(float percentPerSecond, float duration)
+    {
+        StartCoroutine(RegenerationRoutine(percentPerSecond, duration));
+    }
+
+    private IEnumerator RegenerationRoutine(float percentPerSecond, float duration)
+    {
+        float timer = 0f;
+
+        // Definir cada cuánto se aplica la cura (1 segundo)
+        float tickInterval = 1f;
+
+        while (timer < duration)
+        {
+            yield return new WaitForSeconds(tickInterval);
+
+            // Calculamos cuánta vida curar en este tick
+            // (Porcentaje / 100) * VidaMáxima * (tiempo del tick)
+            int healAmount = Mathf.RoundToInt((percentPerSecond / 100f) * maxHealth * tickInterval);
+
+            if (healAmount < 1) healAmount = 1; // Curar al menos 1
+
+            Heal(healAmount);
+
+            timer += tickInterval;
+        }
+    }
+
     public void Heal(int healAmount)
     {
         if (healAmount < 0) return;

@@ -35,4 +35,7 @@ public static class GameEvents
     // Avisa que se usó una habilidad y empezó su cooldown
     public static event Action<AbilitySlot, float> OnAbilityCooldownStarted;
     public static void ReportAbilityCooldownStarted(AbilitySlot slot, float duration) => OnAbilityCooldownStarted?.Invoke(slot, duration);
+
+    public static event Action<BuffEffect, float> OnBuffApplied;
+    public static void ReportBuffApplied(BuffEffect buff, float duration) => OnBuffApplied?.Invoke(buff, duration);
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
   abilityName: Bola de Fuego
   abilityDescription: "Bola poderosa de fuego que hace una gran cantidad de da\xF1o."
   slot: 1
-  projectilePrefab: {fileID: 2165508446026496265, guid: 607d8da654c900e4ba45e885b0262e7d, type: 3}
+  projectilePrefab: {fileID: 3274917789304821761, guid: 071197c6362f7f24b8c8df84e944de6b, type: 3}
   damage: 20
-  manaCost: 20
-  cooldown: 1
+  manaCost: 10
+  cooldown: 5

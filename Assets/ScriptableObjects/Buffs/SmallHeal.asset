@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d4a4a258bd36744a3d00170efd0076, type: 3}
+  m_Name: SmallHeal
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1fd0281e075173f42b4dd3b54ba22ed6, type: 3}
+  pickupSprite: {fileID: -1529837457, guid: ff2a8bd1da9b83c4a8d8a8b9b985447f, type: 3}
+  buffName: "Curacion peque\xF1a"
+  description: 
+  percentPerSecond: 2.5
+  duration: 5

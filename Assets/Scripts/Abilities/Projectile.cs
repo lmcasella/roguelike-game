@@ -14,11 +14,14 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    // Prevenir que al impactar un objeto que está cerca del Player le haga daño igual antes de destruirse
+    private bool hasHit = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Destruir projectil despues de 5 segundos
+        // Destruir projectil
         //FIXME: En vez de proyectiles deberian ser habilidades con un rango determinado que duren X tiempo, no que sigan de largo por el mapa en una direccion
         Destroy(gameObject, lifetime);
     }
@@ -38,6 +41,10 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
+        if (hasHit) return;
+
+        hasHit = true;
+
         // 1. Buscar si lo que chocó tiene un sistema de vida
         SystemHealth health = collision.gameObject.GetComponent<SystemHealth>();
 

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c3f477e56d4f94c875bf963f1871ef, type: 3}
+  m_Name: ManaBurst
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 4e94bced6e9277942ac83c91039bc270, type: 3}
+  pickupSprite: {fileID: 1203376217, guid: ff2a8bd1da9b83c4a8d8a8b9b985447f, type: 3}
+  buffName: Mana infinito
+  description: 
+  duration: 5

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6465968965522837755}
   - component: {fileID: 7736547625502121919}
   m_Layer: 9
-  m_Name: BasicAttack3_Prefab
+  m_Name: Projectile_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

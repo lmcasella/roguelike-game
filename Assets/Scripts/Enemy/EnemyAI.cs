@@ -34,6 +34,8 @@ public class EnemyAI : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     private bool isPreparingAttack = false;
+    private float fearTimer = 0f;
+    private bool isFeared = false;
 
     void Awake()
     {
@@ -66,6 +68,19 @@ public class EnemyAI : MonoBehaviour
         float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
         // --- Lógica de Transición de Estados ---
+        if (isFeared)
+        {
+            currentState = EnemyState.Fleeing;
+            fearTimer -= Time.deltaTime;
+
+            if (fearTimer <= 0)
+            {
+                isFeared = false;
+                currentState = EnemyState.Chasing; // Vuelve a atacar al terminar
+            }
+            return;
+        }
+
         switch (currentState)
         {
             case EnemyState.Idle:
@@ -186,7 +201,7 @@ public class EnemyAI : MonoBehaviour
         return desiredVelocity;
     }
 
-    // FLEE: Lo opuesto exacto a Seek
+    // FLEE: Lo opuesto a Seek
     private Vector2 Flee(Vector2 targetPos)
     {
         // 1. Vector Deseado: Desde OBJETIVO hasta PLAYER (Al revés)
@@ -197,6 +212,27 @@ public class EnemyAI : MonoBehaviour
     private void ApplyForce(Vector2 force)
     {
         rb.velocity = force;
+    }
+
+    public void ApplyFear(float duration)
+    {
+        if (target == null) return;
+
+        isFeared = true;
+        fearTimer = duration;
+        currentState = EnemyState.Fleeing;
+
+        // Feedback visual
+        StartCoroutine(FearFeedbackRoutine(duration));
+
+        Debug.Log($"{gameObject.name} tiene miedo por {duration} segundos!");
+    }
+
+    private IEnumerator FearFeedbackRoutine(float duration)
+    {
+        spriteRenderer.color = Color.blue; // TODO: Un icono de calavera encima
+        yield return new WaitForSeconds(duration);
+        spriteRenderer.color = originalColor;
     }
 
     // --- Debug Visual (Gizmos) ---
