@@ -33,9 +33,10 @@ public class EnemyAI : MonoBehaviour
     private float nextAttackTime = 0f; // Para controlar el cooldown
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
-    private bool isPreparingAttack = false;
+    protected bool isPreparingAttack = false;
     private float fearTimer = 0f;
     private bool isFeared = false;
+    protected bool isOverrideMovement = false;
 
     void Awake()
     {
@@ -63,6 +64,8 @@ public class EnemyAI : MonoBehaviour
     {
         // Si no hay jugador, no hacer nada
         if (target == null) return;
+
+        if (isOverrideMovement) return;
 
         // Distancia al jugador
         float distanceToTarget = Vector2.Distance(transform.position, target.position);
@@ -123,9 +126,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    // Virtual para poder sobreescribir en hijos porque hay enemigos que no necesitan frenarse al atacar
+    protected virtual void FixedUpdate()
     {
         if (target == null) return;
+
+        if (isOverrideMovement) return;
 
         // --- Ejecutar Comportamiento según Estado ---
         switch (currentState)

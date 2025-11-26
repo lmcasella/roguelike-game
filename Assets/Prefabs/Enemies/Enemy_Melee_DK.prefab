@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.491743
+      value: 0.47982883
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5067286
+      value: -1.4595888
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalPosition.z
@@ -116,8 +116,45 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 31d5bd15699200f4eb73c7f014e7f579, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3311594916220237979, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6758721608051842253}
   m_SourcePrefab: {fileID: 100100000, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+--- !u!1 &2456989450297178692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3311594916220237979, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+  m_PrefabInstance: {fileID: 1147816355963306719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6758721608051842253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456989450297178692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9a9daf6130e9a4c8619cd7c9a2a8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  detectionRange: 20
+  attackRange: 5
+  attacksPerSecond: 1
+  useFleeBehavior: 0
+  attackChargeTime: 1
+  chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  target: {fileID: 0}
+  chargeSpeed: 15
+  chargeDuration: 0.5
+  impactRadius: 2
+  explosionDamage: 10
+  impactVFX: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256

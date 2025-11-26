@@ -767,8 +767,8 @@ MonoBehaviour:
   - {fileID: 312706472}
   - {fileID: 105327046}
   enemyPrefabs:
-  - {fileID: 2456989450297178692, guid: 11142b5e099b9c94985e3be6418afd46, type: 3}
-  - {fileID: 7945031538994815678, guid: e9cfe91cf43b7e244896d226d93d8c72, type: 3}
+  - {fileID: 2456989450297178692, guid: 15fe9f33fb77a1c45b8c80f785ad9071, type: 3}
+  - {fileID: 2456989450297178692, guid: 15fe9f33fb77a1c45b8c80f785ad9071, type: 3}
   totalEnemiesToKill: 1
   maxActiveEnemies: 2
   spawnInterval: 2
