@@ -7,7 +7,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifetime = 0.4f;
+    [SerializeField] private float lifetime = 3f;
 
     // Daño final que envia PlayerAbilities
     protected int damage;
@@ -16,6 +16,8 @@ public class Projectile : MonoBehaviour
 
     // Prevenir que al impactar un objeto que está cerca del Player le haga daño igual antes de destruirse
     private bool hasHit = false;
+
+    private GameObject owner;
 
     private void Awake()
     {
@@ -34,14 +36,28 @@ public class Projectile : MonoBehaviour
     }
 
     // Funcion que PlayerAbilities llama para crear el proyectil a indicar cuanto daño hace
-    public void Initialize(int damageAmount)
+    public void Initialize(int damageAmount, GameObject shooter = null)
     {
         this.damage = damageAmount;
+        this.owner = shooter;
+
+        if (owner != null)
+        {
+            Collider2D myCollider = GetComponent<Collider2D>();
+            Collider2D ownerCollider = owner.GetComponent<Collider2D>();
+
+            if (myCollider != null && ownerCollider != null)
+            {
+                Physics2D.IgnoreCollision(myCollider, ownerCollider);
+            }
+        }
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (hasHit) return;
+
+        if (owner != null && collision.gameObject == owner) return;
 
         hasHit = true;
 

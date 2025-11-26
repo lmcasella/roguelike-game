@@ -23,11 +23,15 @@ PrefabInstance:
     - target: {fileID: 1277160364729539431, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 3343291588373904673, guid: b3314e58e61786e498fccdb3e3331099, type: 3}
+      objectReference: {fileID: 3343291588373904673, guid: 6e734370fd6b0d847a53ab75cce43b5b, type: 3}
     - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: dropChance
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: lootPrefab
+      value: 
+      objectReference: {fileID: 8716972187696596512, guid: 85b151f75ea86644e839fb14524d0a1b, type: 3}
     - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: possibleDrops.Array.size
       value: 5

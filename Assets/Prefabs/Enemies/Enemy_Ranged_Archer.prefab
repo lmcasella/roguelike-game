@@ -29,6 +29,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: lootPrefab
+      value: 
+      objectReference: {fileID: 8716972187696596512, guid: 85b151f75ea86644e839fb14524d0a1b, type: 3}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: possibleDrops.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -86,11 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5196679
+      value: -0.3836857
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.744769
+      value: 0.5291115
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -124,8 +128,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1277160364729539431, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8969162342484467966, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -132632437835140308}
   m_SourcePrefab: {fileID: 100100000, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+--- !u!4 &6640627658493486889 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5625715143262610793, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+  m_PrefabInstance: {fileID: 1313557637372527168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7945031538994815678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8969162342484467966, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+  m_PrefabInstance: {fileID: 1313557637372527168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-132632437835140308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945031538994815678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fad36d069914954da06da2c3bd1f549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  detectionRange: 20
+  attackRange: 5
+  attacksPerSecond: 1
+  useFleeBehavior: 0
+  attackChargeTime: 0.5
+  chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  target: {fileID: 0}
+  projectileDamage: 10
+  projectilePrefab: {fileID: 3343291588373904673, guid: b3314e58e61786e498fccdb3e3331099, type: 3}
+  angleSpread: 15
+  firePoint: {fileID: 6640627658493486889}

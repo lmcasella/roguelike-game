@@ -1903,7 +1903,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_86
+      name: jar1
       rect:
         serializedVersion: 2
         x: 64
@@ -1924,7 +1924,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_87
+      name: jar2
       rect:
         serializedVersion: 2
         x: 96
@@ -1966,7 +1966,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_89
+      name: jar3
       rect:
         serializedVersion: 2
         x: 160
@@ -2797,6 +2797,9 @@ TextureImporter:
     nameFileIdTable:
       chest_close: -1140315589
       chest_open: -1190522672
+      jar1: 867206926
+      jar2: -2083664032
+      jar3: -503371350
       step_down: -1669481371
       step_up: 1700650354
       tiles_0: -2112509216
@@ -2901,10 +2904,7 @@ TextureImporter:
       tiles_81: -945839128
       tiles_82: 597979622
       tiles_83: 561598344
-      tiles_86: 867206926
-      tiles_87: -2083664032
       tiles_88: 1170244785
-      tiles_89: -503371350
       tiles_90: -1936468107
       tiles_91: 1413289743
       tiles_92: 1079394308

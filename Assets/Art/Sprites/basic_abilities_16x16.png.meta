@@ -2113,7 +2113,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_abilities_16x16_96
+      name: arrow1
       rect:
         serializedVersion: 2
         x: 112
@@ -2134,7 +2134,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_abilities_16x16_97
+      name: arrow2
       rect:
         serializedVersion: 2
         x: 128
@@ -2163,7 +2163,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2184,7 +2184,7 @@ TextureImporter:
         width: 16
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2205,7 +2205,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -7818,6 +7818,8 @@ TextureImporter:
       BasicAttack_1: -537162596
       BasicAttack_2: -2067106642
       BasicAttack_3: 1077462060
+      arrow1: -767467707
+      arrow2: -69340676
       basic_abilities_16x16_0: 282182434
       basic_abilities_16x16_1: -1597494312
       basic_abilities_16x16_10: -1088681575
@@ -8175,8 +8177,6 @@ TextureImporter:
       basic_abilities_16x16_93: 347300047
       basic_abilities_16x16_94: 991469388
       basic_abilities_16x16_95: -1930519236
-      basic_abilities_16x16_96: -767467707
-      basic_abilities_16x16_97: -69340676
       basic_abilities_ball1: -983344494
       basic_abilities_ball2: -1794424774
       basic_abilities_ball3: 452892265

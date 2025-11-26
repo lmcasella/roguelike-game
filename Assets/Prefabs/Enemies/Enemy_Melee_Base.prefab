@@ -53,6 +53,10 @@ PrefabInstance:
       value: Enemy_Melee_Base
       objectReference: {fileID: 0}
     - target: {fileID: 7157851178341511747, guid: 9859eb7198c70814da383bd2f9dda5e7, type: 3}
+      propertyPath: lootPrefab
+      value: 
+      objectReference: {fileID: 8716972187696596512, guid: 85b151f75ea86644e839fb14524d0a1b, type: 3}
+    - target: {fileID: 7157851178341511747, guid: 9859eb7198c70814da383bd2f9dda5e7, type: 3}
       propertyPath: attackDamage
       value: 10
       objectReference: {fileID: 0}
