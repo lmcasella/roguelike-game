@@ -328,7 +328,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_11
+      name: slime_s
       rect:
         serializedVersion: 2
         x: 0
@@ -349,7 +349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_12
+      name: slime_m
       rect:
         serializedVersion: 2
         x: 32
@@ -370,7 +370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_13
+      name: slime_human
       rect:
         serializedVersion: 2
         x: 64
@@ -1459,9 +1459,6 @@ TextureImporter:
       finalBoss_minion2: -1463437878
       monsters_0: -420399991
       monsters_10: 1629389945
-      monsters_11: -640271389
-      monsters_12: -1636295139
-      monsters_13: 545936827
       monsters_14: -616273854
       monsters_15: 466741568
       monsters_17: -74301875
@@ -1515,6 +1512,9 @@ TextureImporter:
       monsters_9: -1613521220
       orc_darkpriest: 1865209781
       orc_melee: 657917443
+      slime_human: 545936827
+      slime_m: -1636295139
+      slime_s: -640271389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

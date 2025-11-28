@@ -12,6 +12,11 @@ public class EnemyMelee_Charger : EnemyAI
     [SerializeField] private GameObject impactVFX;
     [SerializeField] private LayerMask playerLayer;
 
+    //protected override void Update()
+    //{
+        
+    //}
+
     protected override void FixedUpdate()
     {
         // Si estamos en medio de la carga, NO ejecutamos la lógica del padre para que no nos frene la velocidad a 0.
@@ -27,6 +32,8 @@ public class EnemyMelee_Charger : EnemyAI
     protected override IEnumerator AttackSequence()
     {
         // 1. PREPARACIÓN
+        if (animator != null) animator.enabled = false;
+
         // Se pone rojo y mira al jugador
         GetComponent<SpriteRenderer>().color = Color.magenta;
         Vector2 lockDir = (target.position - transform.position).normalized;
@@ -52,6 +59,8 @@ public class EnemyMelee_Charger : EnemyAI
 
         // 4. RECUPERACIÓN
         GetComponent<SpriteRenderer>().color = Color.white; // Color original
+
+        if (animator != null) animator.enabled = true;
 
         float recoveryTimer = 0f;
         float recoveryDuration = 1f;

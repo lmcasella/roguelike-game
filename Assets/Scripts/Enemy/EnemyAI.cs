@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
     private EnemyState currentState;
 
     // --- Referencias ---
+    protected Animator animator;
     public Transform target; // El jugador
     private Rigidbody2D rb;
     private Vector2 currentVelocity;
@@ -37,6 +38,7 @@ public class EnemyAI : MonoBehaviour
     private float fearTimer = 0f;
     private bool isFeared = false;
     protected bool isOverrideMovement = false;
+    private bool isWalking = false;
 
     void Awake()
     {
@@ -44,6 +46,7 @@ public class EnemyAI : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentState = EnemyState.Idle;
         enemyStats = GetComponent<Enemy>();
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -60,7 +63,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         // Si no hay jugador, no hacer nada
         if (target == null) return;
@@ -71,6 +74,7 @@ public class EnemyAI : MonoBehaviour
         float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
         // --- Lógica de Transición de Estados ---
+        
         if (isFeared)
         {
             currentState = EnemyState.Fleeing;
@@ -164,6 +168,25 @@ public class EnemyAI : MonoBehaviour
                 Vector2 fleeForce = Flee(target.position);
                 ApplyForce(fleeForce);
                 break;
+        }
+
+        if (animator != null)
+        {
+            // Si la velocidad es mayor a 0.1, está caminando
+            bool isMoving = rb.velocity.magnitude > 0.1f;
+            animator.SetBool("IsWalking", isMoving);
+        }
+    }
+
+    private void UpdateSpriteFlip(Vector2 direction)
+    {
+        if (direction.x > 0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (direction.x < -0.01f)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 

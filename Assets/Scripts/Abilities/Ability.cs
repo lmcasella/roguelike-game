@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AbilitySlot { Basic, Ability1, Ability2, Ability3 }
+public enum AbilitySlot { Basic, Ability1, Ability2, Dash }
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/New Ability")]
 public class Ability : ScriptableObject

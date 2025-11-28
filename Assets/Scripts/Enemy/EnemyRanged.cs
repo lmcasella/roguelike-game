@@ -8,6 +8,7 @@ public class EnemyRanged : EnemyAI
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private int projectileDamage = 10;
+    [SerializeField] private int projectileSpeed = 10;
 
     protected override void AttackTarget()
     {
@@ -30,6 +31,7 @@ public class EnemyRanged : EnemyAI
             if (projScript != null)
             {
                 projScript.Initialize(projectileDamage);
+                projScript.SetProjSpeed(projectileSpeed);
             }
         }
     }

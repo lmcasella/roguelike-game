@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour, IDamageable
     //public int AttackDamage => attackDamage; // Propiedad pública para leerlo
 
     private SystemHealth healthComponent;
+    private Animator animator;
 
     // private EnemyAI enemyAI;
 
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Awake()
     {
         healthComponent = GetComponent<SystemHealth>();
+        animator = GetComponent<Animator>();
         // enemyAI = GetComponent<EnemyAI>();
     }
 
@@ -47,6 +49,11 @@ public class Enemy : MonoBehaviour, IDamageable
         Debug.Log("Enemy took damage");
 
         if (hurtSound != null) AudioManager.Instance.PlaySoundEffect(hurtSound);
+
+        if (animator != null)
+        {
+            animator.SetTrigger("OnHit");
+        }
     }
 
     public void Die()

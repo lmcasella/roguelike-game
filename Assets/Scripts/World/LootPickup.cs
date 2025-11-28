@@ -8,6 +8,7 @@ public class LootPickup : MonoBehaviour
 {
     [Header("Datos")]
     [SerializeField] private BuffEffect buffEffect; // ScriptableObject del efecto
+    [SerializeField] private AudioClip pickupSound;
 
     // Para hacer que el ítem "flote"
     private float floatSpeed = 2f;
@@ -47,11 +48,10 @@ public class LootPickup : MonoBehaviour
                 // INTENTAMOS aplicar el buff
                 bool wasApplied = buffEffect.Apply(collision.gameObject);
 
-                // Solo si se aplicó (fue útil), destruimos el objeto del suelo
+                // Solo si se aplicó, destruir el objeto del suelo
                 if (wasApplied)
                 {
-                    // Opcional: Sonido de pickup
-                    // AudioManager.Instance.PlaySoundEffect(pickupSound);
+                    AudioManager.Instance.PlaySoundEffect(pickupSound);
                     Destroy(gameObject);
                 }
             }

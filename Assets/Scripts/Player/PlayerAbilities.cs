@@ -10,7 +10,6 @@ public class PlayerAbilities : MonoBehaviour
     [SerializeField] private Ability startingBasicAttack;
     [SerializeField] private Ability startingAbility1;
     [SerializeField] private Ability startingAbility2;
-    [SerializeField] private Ability startingAbility3;
 
     private PlayerMana playerMana;
     private PlayerStats playerStats;
@@ -42,10 +41,6 @@ public class PlayerAbilities : MonoBehaviour
         if (startingAbility2 != null)
         {
             EquipAbility(startingAbility2);
-        }
-        if (startingAbility3 != null)
-        {
-            EquipAbility(startingAbility3);
         }
 
         // Inicializar cooldowns para todos los slots
@@ -105,7 +100,7 @@ public class PlayerAbilities : MonoBehaviour
         // Ability 3 (Shift)
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            TryUseAbility(AbilitySlot.Ability3);
+            TryUseAbility(AbilitySlot.Dash);
         }
     }
 
@@ -151,11 +146,6 @@ public class PlayerAbilities : MonoBehaviour
             case AbilitySlot.Ability2:
                 finalDamage += playerStats.ability2DamageBonus;
                 finalManaCost += playerStats.ability2ManaCostBonus;
-                break;
-
-            case AbilitySlot.Ability3:
-                finalDamage += playerStats.ability3DamageBonus;
-                finalManaCost += playerStats.ability3ManaCostBonus;
                 break;
         }
 

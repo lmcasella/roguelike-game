@@ -31,6 +31,9 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float dashCooldown = 1f;
     [SerializeField] private bool isInvincibleDuringDash = true;
 
+    [Header("Dash UI")]
+    [SerializeField] private Ability dashAbilityData;
+
     [Header("Audio")]
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip deathSound;
@@ -101,6 +104,11 @@ public class Player : MonoBehaviour, IDamageable
 
             Debug.Log("Player Stats loaded from GameManager");
         }
+
+        if (dashAbilityData != null)
+        {
+            GameEvents.ReportAbilityEquipped(AbilitySlot.Dash, dashAbilityData);
+        }
     }
 
     // Suscribirse a eventos
@@ -136,7 +144,6 @@ public class Player : MonoBehaviour, IDamageable
             {
                 isAttacking = false;
             }
-            // (La orientación se maneja en HandleAttackAim y se mantiene)
         }
         else
         {
@@ -188,7 +195,7 @@ public class Player : MonoBehaviour, IDamageable
 
         // 3. Animacion de ataque
         // NOTE: Deberia hacerse en un Animator
-        StartCoroutine(AttackSquashStretch());
+        //StartCoroutine(AttackSquashStretch());
     }
 
     private void UpdateSpriteFlip(Vector2 direction)
@@ -208,6 +215,11 @@ public class Player : MonoBehaviour, IDamageable
     {
         isDashing = true;
         canDash = false;
+
+        if (dashAbilityData != null)
+        {
+            GameEvents.ReportAbilityCooldownStarted(AbilitySlot.Dash, dashCooldown);
+        }
 
         // 1. Guardar velocidad del dash
         rb.velocity = moveInput.normalized * dashSpeed;
@@ -289,7 +301,12 @@ public class Player : MonoBehaviour, IDamageable
 
         if (hurtSound != null) AudioManager.Instance.PlaySoundEffect(hurtSound);
 
-        StartCoroutine(DamageFlash());
+        if (animator != null)
+        {
+            animator.SetTrigger("OnHit");
+        }
+
+        //StartCoroutine(DamageFlash());
     }
 
     public void Die()

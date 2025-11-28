@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 135444343463155381, guid: 9859eb7198c70814da383bd2f9dda5e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.051400922
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 135444343463155381, guid: 9859eb7198c70814da383bd2f9dda5e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -92,5 +92,6 @@ MonoBehaviour:
   useFleeBehavior: 0
   attackChargeTime: 0
   chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  animator: {fileID: 0}
   target: {fileID: 0}
   damage: 20

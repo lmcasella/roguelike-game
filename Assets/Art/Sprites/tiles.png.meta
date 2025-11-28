@@ -139,7 +139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_2
+      name: dungeon_wall_1
       rect:
         serializedVersion: 2
         x: 0
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_3
+      name: dungeon_wall_2
       rect:
         serializedVersion: 2
         x: 32
@@ -181,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_4
+      name: stone_wall_1
       rect:
         serializedVersion: 2
         x: 0
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_5
+      name: stone_wall_2
       rect:
         serializedVersion: 2
         x: 32
@@ -223,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_6
+      name: stone_wall_3
       rect:
         serializedVersion: 2
         x: 64
@@ -370,7 +370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_13
+      name: petrol_floor_1
       rect:
         serializedVersion: 2
         x: 0
@@ -391,7 +391,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_14
+      name: petrol_floor_2
       rect:
         serializedVersion: 2
         x: 32
@@ -412,7 +412,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_15
+      name: petrol_floor_3
       rect:
         serializedVersion: 2
         x: 64
@@ -433,7 +433,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_16
+      name: petrol_floor_4
       rect:
         serializedVersion: 2
         x: 96
@@ -517,7 +517,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_20
+      name: petrol_floor_0
       rect:
         serializedVersion: 2
         x: 0
@@ -538,7 +538,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_21
+      name: petrol_floor_5
       rect:
         serializedVersion: 2
         x: 32
@@ -559,7 +559,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_22
+      name: petrol_floor_6
       rect:
         serializedVersion: 2
         x: 64
@@ -580,7 +580,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_23
+      name: petrol_floor_7
       rect:
         serializedVersion: 2
         x: 96
@@ -790,7 +790,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_33
+      name: blue_floor_v_1
       rect:
         serializedVersion: 2
         x: 32
@@ -811,7 +811,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_34
+      name: blue_floor_v_2
       rect:
         serializedVersion: 2
         x: 64
@@ -832,7 +832,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_35
+      name: blue_floor_v_3
       rect:
         serializedVersion: 2
         x: 96
@@ -1189,7 +1189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_52
+      name: blue_floor_1
       rect:
         serializedVersion: 2
         x: 0
@@ -1210,7 +1210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_53
+      name: blue_floor_2
       rect:
         serializedVersion: 2
         x: 32
@@ -1231,7 +1231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_54
+      name: blue_floor_3
       rect:
         serializedVersion: 2
         x: 64
@@ -1252,7 +1252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_55
+      name: blue_floor_4
       rect:
         serializedVersion: 2
         x: 96
@@ -1273,7 +1273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_56
+      name: green_floor_1
       rect:
         serializedVersion: 2
         x: 0
@@ -1294,7 +1294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_57
+      name: green_floor_2
       rect:
         serializedVersion: 2
         x: 32
@@ -1315,7 +1315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_58
+      name: green_floor_3
       rect:
         serializedVersion: 2
         x: 64
@@ -1336,7 +1336,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_59
+      name: green_floor_4
       rect:
         serializedVersion: 2
         x: 96
@@ -1357,7 +1357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_60
+      name: green_floor_5
       rect:
         serializedVersion: 2
         x: 32
@@ -1378,7 +1378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_61
+      name: green_floor_6
       rect:
         serializedVersion: 2
         x: 64
@@ -1399,7 +1399,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_62
+      name: green_floor_7
       rect:
         serializedVersion: 2
         x: 96
@@ -1588,7 +1588,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_71
+      name: rotten_door_close
       rect:
         serializedVersion: 2
         x: 128
@@ -1609,7 +1609,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_72
+      name: rotten_door_open
       rect:
         serializedVersion: 2
         x: 160
@@ -1630,7 +1630,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_73
+      name: boss_door
       rect:
         serializedVersion: 2
         x: 192
@@ -1819,7 +1819,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_82
+      name: spike_off
       rect:
         serializedVersion: 2
         x: 480
@@ -1840,7 +1840,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_83
+      name: spike_on
       rect:
         serializedVersion: 2
         x: 512
@@ -2050,7 +2050,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_93
+      name: flower_1
       rect:
         serializedVersion: 2
         x: 0
@@ -2071,7 +2071,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_94
+      name: flower_2
       rect:
         serializedVersion: 2
         x: 32
@@ -2092,7 +2092,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_95
+      name: flower_3
       rect:
         serializedVersion: 2
         x: 64
@@ -2113,7 +2113,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_96
+      name: flower_4
       rect:
         serializedVersion: 2
         x: 96
@@ -2134,7 +2134,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_97
+      name: flower_5
       rect:
         serializedVersion: 2
         x: 128
@@ -2155,7 +2155,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_98
+      name: flower_6
       rect:
         serializedVersion: 2
         x: 160
@@ -2176,7 +2176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_99
+      name: flower_7
       rect:
         serializedVersion: 2
         x: 192
@@ -2197,7 +2197,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_100
+      name: flower_8
       rect:
         serializedVersion: 2
         x: 224
@@ -2218,7 +2218,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_101
+      name: flower_9
       rect:
         serializedVersion: 2
         x: 256
@@ -2239,7 +2239,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_102
+      name: flower_10
       rect:
         serializedVersion: 2
         x: 288
@@ -2260,7 +2260,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_103
+      name: flower_11
       rect:
         serializedVersion: 2
         x: 320
@@ -2281,7 +2281,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_104
+      name: flower_12
       rect:
         serializedVersion: 2
         x: 352
@@ -2302,7 +2302,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_105
+      name: flower_13
       rect:
         serializedVersion: 2
         x: 384
@@ -2323,7 +2323,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_106
+      name: flower_14
       rect:
         serializedVersion: 2
         x: 416
@@ -2344,7 +2344,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_107
+      name: flower_15
       rect:
         serializedVersion: 2
         x: 448
@@ -2365,7 +2365,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_108
+      name: flower_16
       rect:
         serializedVersion: 2
         x: 480
@@ -2386,7 +2386,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_109
+      name: mash_1
       rect:
         serializedVersion: 2
         x: 0
@@ -2407,7 +2407,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_110
+      name: mash_2
       rect:
         serializedVersion: 2
         x: 32
@@ -2701,7 +2701,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_124
+      name: tree_1
       rect:
         serializedVersion: 2
         x: 0
@@ -2722,10 +2722,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_125
+      name: tree_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 0
         width: 32
         height: 32
@@ -2743,16 +2743,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_126
+      name: tree_3
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 0
         width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -2795,27 +2795,66 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      blue_floor_1: -1217677527
+      blue_floor_2: -1627507833
+      blue_floor_3: 1125437401
+      blue_floor_4: -979393611
+      blue_floor_v_1: -851241299
+      blue_floor_v_2: 902394260
+      blue_floor_v_3: -1949347784
+      boss_door: 91948884
       chest_close: -1140315589
       chest_open: -1190522672
+      dungeon_wall_1: 1273054069
+      dungeon_wall_2: 1656720465
+      flower_1: -776837374
+      flower_10: -580175771
+      flower_11: -924849048
+      flower_12: 435240018
+      flower_13: -1530739035
+      flower_14: 2018996110
+      flower_15: 372705052
+      flower_16: -316914942
+      flower_2: 1278272925
+      flower_3: -1132602571
+      flower_4: -2127697026
+      flower_5: 777401027
+      flower_6: -488082300
+      flower_7: -1827415918
+      flower_8: 1234117391
+      flower_9: 2137277997
+      green_floor_1: -833872376
+      green_floor_2: 1745569957
+      green_floor_3: -257389618
+      green_floor_4: -1786931360
+      green_floor_5: -1424725093
+      green_floor_6: 526643893
+      green_floor_7: 1801275089
       jar1: 867206926
       jar2: -2083664032
       jar3: -503371350
+      mash_1: 232813125
+      mash_2: 1642490868
+      petrol_floor_0: 1993687382
+      petrol_floor_1: -1675329260
+      petrol_floor_2: 1302707108
+      petrol_floor_3: -1612422187
+      petrol_floor_4: -544410778
+      petrol_floor_5: 1340542281
+      petrol_floor_6: 56419000
+      petrol_floor_7: 241813325
+      rotten_door_close: 213600698
+      rotten_door_open: -1357546272
+      spike_off: 597979622
+      spike_on: 561598344
       step_down: -1669481371
       step_up: 1700650354
+      stone_wall_1: 1923086723
+      stone_wall_2: -1488263887
+      stone_wall_3: 64903715
       tiles_0: -2112509216
       tiles_1: 1576274662
-      tiles_100: 1234117391
-      tiles_101: 2137277997
-      tiles_102: -580175771
-      tiles_103: -924849048
-      tiles_104: 435240018
-      tiles_105: -1530739035
-      tiles_106: 2018996110
-      tiles_107: 372705052
-      tiles_108: -316914942
-      tiles_109: 232813125
       tiles_11: -702320281
-      tiles_110: 1642490868
       tiles_111: -866763863
       tiles_112: 571648843
       tiles_113: -664971206
@@ -2830,61 +2869,31 @@ TextureImporter:
       tiles_121: 856906147
       tiles_122: 1837224415
       tiles_123: 1259621613
-      tiles_124: -556978238
-      tiles_125: -570820709
-      tiles_126: -983001975
       tiles_127: 1732291184
-      tiles_13: -1675329260
-      tiles_14: 1302707108
-      tiles_15: -1612422187
-      tiles_16: -544410778
       tiles_17: 830681458
       tiles_18: 1731595006
       tiles_19: -1075904478
-      tiles_2: 1273054069
-      tiles_20: 1993687382
-      tiles_21: 1340542281
-      tiles_22: 56419000
-      tiles_23: 241813325
       tiles_24: -1194881718
       tiles_25: 788204641
       tiles_26: 687831163
       tiles_27: 1799172981
       tiles_28: -901676868
       tiles_29: -978927961
-      tiles_3: 1656720465
       tiles_30: 733223598
       tiles_31: -1189217255
       tiles_32: -1788934671
-      tiles_33: -851241299
-      tiles_34: 902394260
-      tiles_35: -1949347784
       tiles_36: 1893687616
       tiles_37: -900320493
       tiles_38: -2036147642
       tiles_39: -775452900
-      tiles_4: 1923086723
       tiles_40: 1566356765
       tiles_41: 1111432643
       tiles_42: 1821979442
       tiles_43: -104220168
       tiles_44: 1533684086
       tiles_49: -1118394984
-      tiles_5: -1488263887
       tiles_50: -425841632
       tiles_51: 1955564546
-      tiles_52: -1217677527
-      tiles_53: -1627507833
-      tiles_54: 1125437401
-      tiles_55: -979393611
-      tiles_56: -833872376
-      tiles_57: 1745569957
-      tiles_58: -257389618
-      tiles_59: -1786931360
-      tiles_6: 64903715
-      tiles_60: -1424725093
-      tiles_61: 526643893
-      tiles_62: 1801275089
       tiles_63: -706428122
       tiles_64: -1662374886
       tiles_65: 2041046920
@@ -2892,9 +2901,6 @@ TextureImporter:
       tiles_67: -1590983294
       tiles_68: -661546829
       tiles_7: -942232791
-      tiles_71: 213600698
-      tiles_72: -1357546272
-      tiles_73: 91948884
       tiles_76: 2127151227
       tiles_77: -695725935
       tiles_78: -1177378368
@@ -2902,19 +2908,13 @@ TextureImporter:
       tiles_8: 1480940120
       tiles_80: -751842442
       tiles_81: -945839128
-      tiles_82: 597979622
-      tiles_83: 561598344
       tiles_88: 1170244785
       tiles_90: -1936468107
       tiles_91: 1413289743
       tiles_92: 1079394308
-      tiles_93: -776837374
-      tiles_94: 1278272925
-      tiles_95: -1132602571
-      tiles_96: -2127697026
-      tiles_97: 777401027
-      tiles_98: -488082300
-      tiles_99: -1827415918
+      tree_1: -556978238
+      tree_2: -570820709
+      tree_3: -983001975
       wood_door_close: 1717523250
       wood_door_open: -700464943
       wood_floor_1: 1443064831

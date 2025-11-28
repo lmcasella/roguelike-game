@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4064307378510362837}
   - component: {fileID: 6054552168219513337}
   - component: {fileID: 1636986906605075061}
+  - component: {fileID: -2318629494095840215}
   - component: {fileID: 1699227903957455252}
   m_Layer: 7
   m_Name: Jarron
@@ -136,6 +137,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   currentHealth: 0
+--- !u!114 &-2318629494095840215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610889460149660500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01698a6e505ae8f4887fa6c57957707c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleSprites:
+  - {fileID: 867206926, guid: 3f877ad1702ba3a45a3b378c76adb632, type: 3}
+  - {fileID: -2083664032, guid: 3f877ad1702ba3a45a3b378c76adb632, type: 3}
+  - {fileID: -503371350, guid: 3f877ad1702ba3a45a3b378c76adb632, type: 3}
+  randomFlipX: 0
 --- !u!114 &1699227903957455252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,4 +173,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 384d461c870b0a543ac61ea07cb3248a, type: 2}
   - {fileID: 11400000, guid: 6a640235aa0f5394695b00a1e96e8070, type: 2}
   - {fileID: 11400000, guid: 31d5bd15699200f4eb73c7f014e7f579, type: 2}
-  dropChance: 30
+  dropChance: 15

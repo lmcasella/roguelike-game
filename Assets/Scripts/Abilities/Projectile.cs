@@ -19,6 +19,8 @@ public class Projectile : MonoBehaviour
 
     private GameObject owner;
 
+    public void SetProjSpeed(int value) { speed = value; }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

@@ -228,8 +228,9 @@ MonoBehaviour:
   attackLookDuration: 0.4
   dashSpeed: 15
   dashDuration: 0.2
-  dashCooldown: 7
+  dashCooldown: 5
   isInvincibleDuringDash: 1
+  dashAbilityData: {fileID: 11400000, guid: 4b65f559814d04a4f98b7857e4d3fafc, type: 2}
   hurtSound: {fileID: 8300000, guid: e53ad0730caef8249aa8b14ce8c630ba, type: 3}
   deathSound: {fileID: 8300000, guid: a5fc127ecd090204099a6d0ef49e5733, type: 3}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
@@ -263,7 +264,7 @@ MonoBehaviour:
   startingBasicAttack: {fileID: 11400000, guid: 8e54ac49250cbef4f80e0c9d2b0fef82, type: 2}
   startingAbility1: {fileID: 11400000, guid: 961ac08f8ed6e6d4d8731d16f5a232cd, type: 2}
   startingAbility2: {fileID: 11400000, guid: 2551a0de488f3424dba08716d6128d83, type: 2}
-  startingAbility3: {fileID: 0}
+  startingAbility3: {fileID: 11400000, guid: 4b65f559814d04a4f98b7857e4d3fafc, type: 2}
 --- !u!114 &-4557206077878913822
 MonoBehaviour:
   m_ObjectHideFlags: 0
