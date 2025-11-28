@@ -12,14 +12,14 @@ public class EnemyMelee_Charger : EnemyAI
     [SerializeField] private GameObject impactVFX;
     [SerializeField] private LayerMask playerLayer;
 
-    //protected override void Update()
+    //protected override void update()
     //{
         
     //}
 
     protected override void FixedUpdate()
     {
-        // Si estamos en medio de la carga, NO ejecutamos la lógica del padre para que no nos frene la velocidad a 0.
+        // Si estamos en medio de la carga, NO ejecutamos la lógica del padre para que no nos frene la velocidad a 0
         if (isPreparingAttack)
         {
             return;
@@ -104,7 +104,7 @@ public class EnemyMelee_Charger : EnemyAI
         }
 
         // Debug visual
-        Debug.Log("BOOM! Impacto de carga");
+        Debug.Log("Impacto de carga");
     }
 
     private void OnDrawGizmos()

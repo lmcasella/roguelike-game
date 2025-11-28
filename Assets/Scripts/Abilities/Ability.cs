@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Define diferentes tipos de slots para habilidades
 public enum AbilitySlot { Basic, Ability1, Ability2, Dash }
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/New Ability")]

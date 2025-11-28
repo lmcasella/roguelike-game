@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Clase que maneja la interacción del jugador con objetos interactuables
+// NOTE: No se esta usando actualmente
 public class PlayerInteract : MonoBehaviour
 {
     [Header("Configuración")]

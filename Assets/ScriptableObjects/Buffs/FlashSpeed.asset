@@ -16,5 +16,5 @@ MonoBehaviour:
   pickupSprite: {fileID: 2004680549, guid: ff2a8bd1da9b83c4a8d8a8b9b985447f, type: 3}
   buffName: Aumento de velocidad
   description: 
-  speedMultiplier: 1.4
+  speedMultiplier: 1.3
   duration: 3

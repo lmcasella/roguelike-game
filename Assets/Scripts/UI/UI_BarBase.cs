@@ -28,7 +28,7 @@ public class UI_BarBase : MonoBehaviour
     // Logica generica para actualiar valores
     protected void UpdateBarValue(int currentValue, int maxValue)
     {
-        // Actualizar el maximo por si sube de nivel por ejemplo
+        // Actualizar el maximo por si sube de nivel en un futuro
         slider.maxValue = maxValue;
 
         if (smoothTransition)

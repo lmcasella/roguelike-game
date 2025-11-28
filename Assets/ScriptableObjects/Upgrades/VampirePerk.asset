@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe744674b05a664ba3387c2fd48a882, type: 3}
   m_Name: VampirePerk
   m_EditorClassIdentifier: 
-  upgradeName: Sed de Sangre
-  description: Recupera 2 HP al matar enemigos
+  description: Recupera 5 HP al matar enemigos
+  icon: {fileID: 0}

@@ -69,7 +69,7 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private void Start() // Asegúrate de tener Start
+    private void Start()
     {
         originalColor = spriteRenderer.color;
 
@@ -82,21 +82,21 @@ public class Player : MonoBehaviour, IDamageable
             out int extraProj))
         {
             // 1. Aplicar Vida
-            // Asegúrate de tener SetMaxHealth en SystemHealth
+            // Tener SetMaxHealth en SystemHealth
             healthComponent.SetMaxHealth(maxHp);
             healthComponent.SetHealth(hp);
 
             // 2. Aplicar Maná
             var manaComp = GetComponent<PlayerMana>();
-            manaComp.SetMaxMana(maxMp); // Necesitas crear este método
-            manaComp.SetMana(mp);       // Necesitas crear este método
+            manaComp.SetMaxMana(maxMp);
+            manaComp.SetMana(mp);       
 
             // 3. Aplicar Stats de Ataque
             var statsComp = GetComponent<PlayerStats>();
             statsComp.basicDamageBonus = dmgBonus;
             statsComp.basicExtraProjectiles = extraProj;
 
-            // 4. (Opcional) Re-aplicar Upgrades especiales
+            // 4. Re-aplicar Upgrades especiales
             if (GameManager.Instance.hasVampirePerk)
             {
                 gameObject.AddComponent<VampireBehaviour>();
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour, IDamageable
         // Chequeo para animación de caminar
         isWalking = moveInput.magnitude > 0.1f;
 
-        // --- Lógica de Estado (Atacando vs. Moviendo) ---
+        // --- Lógica de Estado ---
         if (isAttacking)
         {
             // 1. SI ESTÁ ATACANDO
@@ -148,7 +148,6 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             // 2. SI NO ESTÁ ATACANDO (caminando o quieto)
-            // Mirar en la dirección del movimiento (solo L/R)
             if (isWalking)
             {
                 UpdateSpriteFlip(moveInput);
@@ -176,8 +175,7 @@ public class Player : MonoBehaviour, IDamageable
             finalSpeed *= attackSlowdownMultiplier;
         }
 
-        float currentSpeed = isAttacking ? moveSpeed * attackSlowdownMultiplier : moveSpeed;
-        rb.velocity = moveInput * currentSpeed;
+        rb.velocity = moveInput * finalSpeed;
     }
 
     // Se llama cada vez que PlayerAbilities lanza un ataque
@@ -241,53 +239,19 @@ public class Player : MonoBehaviour, IDamageable
         canDash = true;
     }
 
-    // --- Animaciones "Falsas" (Coroutines) ---
-
-    // "Estirarse" al atacar
-    private IEnumerator AttackSquashStretch()
-    {
-        Vector3 originalScale = transform.localScale;
-        Vector3 stretchScale = new Vector3(originalScale.x * 1.1f, originalScale.y * 0.9f, originalScale.z);
-        Vector3 squashScale = new Vector3(originalScale.x * 0.9f, originalScale.y * 1.1f, originalScale.z);
-
-        float duration = 0.1f;
-
-        // Squash (anticipación)
-        transform.localScale = squashScale;
-        yield return new WaitForSeconds(duration);
-
-        // Stretch (el golpe)
-        transform.localScale = stretchScale;
-        yield return new WaitForSeconds(duration);
-
-        // Volver a la normalidad
-        transform.localScale = originalScale;
-    }
-
-    private IEnumerator DamageFlash()
-    {
-        // 1. Cambiar al color de daño
-        spriteRenderer.color = damageColor;
-
-        // 2. Esperar un instante
-        yield return new WaitForSeconds(flashDuration);
-
-        // 3. Volver al color normal
-        spriteRenderer.color = originalColor;
-    }
-
     // --- Boosts ---
+    // FIXME: Conflicto en el cambio de color con el Animator
     public IEnumerator ActivateSpeedBoost(float multiplier, float duration)
     {
         currentSpeedMultiplier = multiplier;
 
-        // Efecto visual: Tinte amarillo (Flash style)
+        // Efecto visual: Tinte amarillo
         spriteRenderer.color = Color.yellow;
 
         yield return new WaitForSeconds(duration);
 
         currentSpeedMultiplier = 1f;
-        spriteRenderer.color = originalColor; // Volvemos al color normal
+        spriteRenderer.color = originalColor; // Color normal
     }
 
     // --- Implementacion del IDamageable ---
@@ -311,7 +275,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        // Logica especifica de muerte del Player
+        // Logica de muerte del Player
         Debug.Log("Player has died");
         GameEvents.ReportPlayerDied();
 

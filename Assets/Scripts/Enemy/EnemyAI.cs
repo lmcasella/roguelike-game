@@ -8,8 +8,8 @@ public class EnemyAI : MonoBehaviour
     // Configuracion
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float detectionRange = 10f; // Cuándo empieza a perseguir
-    [SerializeField] private float attackRange = 1f;    // Cuándo ataca
+    [SerializeField] private float detectionRange = 10f; // Cuando empieza a perseguir
+    [SerializeField] private float attackRange = 1f;    // Cuando ataca
 
     [Header("Combat")]
     [SerializeField] private float attacksPerSecond = 1f;
@@ -39,18 +39,19 @@ public class EnemyAI : MonoBehaviour
     private bool isFeared = false;
     protected bool isOverrideMovement = false;
     private bool isWalking = false;
+    private bool overrideColor = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         currentState = EnemyState.Idle;
         enemyStats = GetComponent<Enemy>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         // Buscar al jugador una vez al inicio (Player tiene que tener el tag Player)
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -128,6 +129,8 @@ public class EnemyAI : MonoBehaviour
                 }
                 break;
         }
+
+        RotateSprite();
     }
 
     // Virtual para poder sobreescribir en hijos porque hay enemigos que no necesitan frenarse al atacar
@@ -178,6 +181,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    protected virtual void LateUpdate()
+    {
+        // Este método se ejecuta DESPUÉS del Animator.
+        if (overrideColor)
+        {
+            spriteRenderer.color = new Color(0.5f, 0f, 1f, 1f); // Violeta
+        }
+    }
+
     private void UpdateSpriteFlip(Vector2 direction)
     {
         if (direction.x > 0.01f)
@@ -190,13 +202,34 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void RotateSprite()
+    {
+        // Si no tenemos referencia al sprite, salimos
+        if (spriteRenderer == null || target == null) return;
+
+        Vector2 directionToTarget = target.position - transform.position;
+
+        // Si se mueve a la izq
+        if (directionToTarget.x > 0.1f)
+        {
+            spriteRenderer.flipX = true; // Sprite original
+        }
+        // Si se mueve a la der
+        else
+        {
+            spriteRenderer.flipX = false; // Invertir sprite
+        }
+    }
+
     // Ataque
     protected virtual IEnumerator AttackSequence()
     {
         isPreparingAttack = true;
 
+        if (animator != null) animator.enabled = false;
+
         // 1. INICIO DE CARGA (Feedback Visual)
-        spriteRenderer.color = chargeColor; // Se pone de color (aviso)
+        spriteRenderer.color = chargeColor; // Se pone de color. AVISO
 
         // 2. ESPERA (El tiempo que tiene el jugador para reaccionar)
         yield return new WaitForSeconds(attackChargeTime);
@@ -206,6 +239,7 @@ public class EnemyAI : MonoBehaviour
 
         // 4. RESTAURAR VISUALES
         spriteRenderer.color = originalColor;
+        if (animator != null) animator.enabled = true;
 
         // 5. CALCULAR COOLDOWN
         nextAttackTime = Time.time + (1f / attacksPerSecond);
@@ -233,7 +267,7 @@ public class EnemyAI : MonoBehaviour
     // FLEE: Lo opuesto a Seek
     private Vector2 Flee(Vector2 targetPos)
     {
-        // 1. Vector Deseado: Desde OBJETIVO hasta PLAYER (Al revés)
+        // 1. Vector Deseado: Desde OBJETIVO hasta PLAYER
         Vector2 desiredVelocity = ((Vector2)transform.position - targetPos).normalized * moveSpeed;
         return desiredVelocity;
     }
@@ -259,8 +293,14 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator FearFeedbackRoutine(float duration)
     {
-        spriteRenderer.color = Color.blue; // TODO: Un icono de calavera encima
+        // 1. Activamos la anulación de color
+        overrideColor = true;
+
+        // Esperamos el tiempo del miedo
         yield return new WaitForSeconds(duration);
+
+        // 2. Desactivamos y volvemos al original
+        overrideColor = false;
         spriteRenderer.color = originalColor;
     }
 

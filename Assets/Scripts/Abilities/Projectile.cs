@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Proyectil de Player
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class Projectile : MonoBehaviour
@@ -26,7 +27,6 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         // Destruir projectil
-        //FIXME: En vez de proyectiles deberian ser habilidades con un rango determinado que duren X tiempo, no que sigan de largo por el mapa en una direccion
         Destroy(gameObject, lifetime);
     }
 
@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
         rb.velocity = transform.right * speed;   
     }
 
-    // Funcion que PlayerAbilities llama para crear el proyectil a indicar cuanto daño hace
+    // Funcion que PlayerAbilities llama para crear el proyectil e indicar cuanto daño hace
     public void Initialize(int damageAmount, GameObject shooter = null)
     {
         this.damage = damageAmount;

@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1277160364729539431, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: detectionRange
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1277160364729539431, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: projectileDamage
@@ -56,10 +56,18 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 6a640235aa0f5394695b00a1e96e8070, type: 2}
+    - target: {fileID: 2714609305143054615, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8898530146547866417, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1865209781, guid: 460f2f7a471f9ee45ad4f988f4a58bac, type: 3}
+    - target: {fileID: 8898530146547866417, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8969162342484467966, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_Name
       value: Enemy_Ranged_Orc
@@ -90,11 +98,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5196679
+      value: -29.465405
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.744769
+      value: -0.4278217
       objectReference: {fileID: 0}
     - target: {fileID: 9218981560198177870, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_LocalPosition.z

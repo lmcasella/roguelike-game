@@ -30,11 +30,13 @@ public class GameUI : MonoBehaviour
     void OnEnable()
     {
         GameEvents.OnPlayerDied += ShowGameOver;
+        GameEvents.OnBossDied += ShowVictory;
     }
 
     void OnDisable()
     {
         GameEvents.OnPlayerDied -= ShowGameOver;
+        GameEvents.OnBossDied -= ShowVictory;
     }
 
     // Update is called once per frame

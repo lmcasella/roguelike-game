@@ -18,7 +18,8 @@ public class RoomManager : MonoBehaviour
     [Header("Reglas del Nivel")]
     [SerializeField] private int totalEnemiesToKill = 10; // Meta para abrir la puerta y activar recompensas
     [SerializeField] private int maxActiveEnemies = 3;    // Límite enemigos en simultáneo
-    [SerializeField] private float spawnInterval = 2f;    // Tiempo entre apariciones
+    [SerializeField] private float spawnInterval = 2f;    // Tiempo entre spawneo
+    [SerializeField] private bool isBossRoom = false;
 
     private List<Enemy> activeEnemies = new List<Enemy>(); // Lista dinámica
     private int enemiesKilledCount = 0;
@@ -85,7 +86,7 @@ public class RoomManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        // Seguridad: Chequear que esté configurado qué y dónde spawnear
+        // Chequear que esté configurado qué y dónde spawnear
         if (spawnPoints.Count == 0 || enemyPrefabs.Count == 0) return;
 
         // 1. Elegir un punto al azar
@@ -111,10 +112,10 @@ public class RoomManager : MonoBehaviour
     {
         if (!roomActive) return;
 
-        // Verificar si el enemigo que murió pertenece a ESTA sala
+        // Verificar si el enemigo que murió pertenece a esta sala
         if (activeEnemies.Contains(enemy))
         {
-            // Lo sacamos de la lista de activos para liberar el esacio
+            // Lo sacamos de la lista de activos para liberar el espacio
             activeEnemies.Remove(enemy);
 
             // Sumamos al contador de muertes
@@ -137,7 +138,11 @@ public class RoomManager : MonoBehaviour
 
         OpenDoors();
         GameEvents.OnEnemyDied -= OnEnemyDiedHandler;
-        GameEvents.ReportRoomCleared();
+
+        if (!isBossRoom)
+        {
+            GameEvents.ReportRoomCleared();
+        }
     }
 
     private void CloseDoors()

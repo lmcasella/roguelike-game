@@ -24,8 +24,6 @@ public class PlayerMana : MonoBehaviour
         // Regenerar si no está full de mana
         if (currentMana < maxMana)
         {
-            // TODO: Logica de regeneracion de mana al matar enemigos o agarrar items
-
             // Si se pasa del mana maximo lockear al valor del mana maximo
             if (currentMana > maxMana)
             {
@@ -47,27 +45,27 @@ public class PlayerMana : MonoBehaviour
     // Gastar mana. Debe llamarse despues de checkear si tiene suficiente mana
     public bool SpendMana(int manaCost)
     {
+        // 1. Verificar si es infinito
         if (isInfinite) return true;
 
-        currentMana -= manaCost;
-
-        // Verificar si alcanza el mana
+        // 2. Verificar si alcanza (sin restar todavía)
         if (currentMana >= manaCost)
         {
+            // 3. Restamos
             currentMana -= manaCost;
-            // Notificar nuevo mana
+
             GameEvents.ReportPlayerManaChanged(currentMana, maxMana);
             return true;
         }
 
-        // No alcanza
+        // 4. No alcanza
         return false;
     }
 
     public IEnumerator ActivateInfiniteMana(float duration)
     {
         isInfinite = true;
-        // Opcional: Feedback visual (ej. cambiar color de la barra)
+        // TODO: Feedback visual (ej. cambiar color de la barra)
         Debug.Log("¡MANÁ INFINITO ACTIVADO!");
 
         yield return new WaitForSeconds(duration);

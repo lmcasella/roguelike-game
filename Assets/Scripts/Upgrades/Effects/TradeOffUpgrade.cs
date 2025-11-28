@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// NOTE: No se esta usando
 [CreateAssetMenu(menuName = "Upgrades/Trade-Off (Risk vs Reward)")]
 public class TradeOffUpgrade : UpgradeEffect
 {

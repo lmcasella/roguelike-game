@@ -11,6 +11,10 @@ public class PlayerAbilities : MonoBehaviour
     [SerializeField] private Ability startingAbility1;
     [SerializeField] private Ability startingAbility2;
 
+    [Header("Aiming Visuals")]
+    [SerializeField] private GameObject fearConeVisual;
+    private bool isAimingFear = false;
+
     private PlayerMana playerMana;
     private PlayerStats playerStats;
     private Camera mainCam;
@@ -78,6 +82,12 @@ public class PlayerAbilities : MonoBehaviour
     {
         // --- Input ---
 
+        // Lógica de Apuntado
+        if (isAimingFear)
+        {
+            HandleAimingLogic();
+        }
+
         // Basic Attack (Fire1)
         if (Input.GetButton("Fire1"))
         {
@@ -92,15 +102,78 @@ public class PlayerAbilities : MonoBehaviour
         }
 
         // Ability 2 (E)
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    TryUseAbility(AbilitySlot.Ability2);
+        //}
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TryUseAbility(AbilitySlot.Ability2);
+            ToggleFearAiming();
         }
 
         // Ability 3 (Shift)
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             TryUseAbility(AbilitySlot.Dash);
+        }
+    }
+
+    private void ToggleFearAiming()
+    {
+        // Si no tenemos la habilidad equipada o está en cooldown, no hacemos nada
+        if (!equippedAbilities.ContainsKey(AbilitySlot.Ability2)) return;
+        if (Time.time < abilityCooldowns[AbilitySlot.Ability2])
+        {
+            Debug.Log("Fear en Cooldown");
+            return;
+        }
+
+        isAimingFear = !isAimingFear; // Interruptor
+
+        if (fearConeVisual != null)
+        {
+            fearConeVisual.SetActive(isAimingFear);
+        }
+    }
+
+    private void HandleAimingLogic()
+    {
+        // 1. ROTAR EL CONO HACIA EL MOUSE
+        Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookDir = mousePos - (Vector2)transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+
+        if (fearConeVisual != null)
+        {
+            fearConeVisual.transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+        // 2. DISPARAR CON CLIC IZQUIERDO
+        if (Input.GetMouseButtonDown(0)) // Clic izquierdo
+        {
+            TryUseAbility(AbilitySlot.Ability2); // Dispara la habilidad real
+
+            // Apagamos el modo apuntar
+            isAimingFear = false;
+            if (fearConeVisual != null) fearConeVisual.SetActive(false);
+
+            // Evitar Fire1 al tirar la E
+            if (abilityCooldowns.ContainsKey(AbilitySlot.Basic))
+            {
+                float safetyCooldown = Time.time + 0.2f;
+                if (abilityCooldowns[AbilitySlot.Basic] < safetyCooldown)
+                {
+                    abilityCooldowns[AbilitySlot.Basic] = safetyCooldown;
+                }
+            }
+        }
+
+        // 3. CANCELAR CON CLIC DERECHO
+        if (Input.GetMouseButtonDown(1))
+        {
+            isAimingFear = false;
+            if (fearConeVisual != null) fearConeVisual.SetActive(false);
         }
     }
 

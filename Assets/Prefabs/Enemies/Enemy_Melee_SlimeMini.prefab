@@ -13,13 +13,25 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: moveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: attackRange
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: detectionRange
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3093996735870272340, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -640271389, guid: 460f2f7a471f9ee45ad4f988f4a58bac, type: 3}
+    - target: {fileID: 3093996735870272340, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3247985404075725293, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_Size.x
       value: 0.53
@@ -120,6 +132,10 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 31d5bd15699200f4eb73c7f014e7f579, type: 2}
+    - target: {fileID: 8368182205672229234, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: maxHealth
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

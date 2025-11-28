@@ -19,6 +19,6 @@ MonoBehaviour:
     a los enemigos.
   slot: 0
   projectilePrefab: {fileID: 7035612327740694885, guid: 04d666dc347b9344bbf46d7a54aa0a59, type: 3}
-  damage: 10
+  damage: 15
   manaCost: 0
   cooldown: 0.5

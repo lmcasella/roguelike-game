@@ -10,17 +10,35 @@ public class DestructibleProp : MonoBehaviour, IDamageable
     [SerializeField] private float dropChance = 40f;
 
     private SystemHealth healthComponent;
-    public int CurrentHealth => healthComponent.GetCurrentHealth();
+    private bool isDestroyed = false;
+    private void Awake()
+    {
+        healthComponent = GetComponent<SystemHealth>();
+    }
+
+    public int CurrentHealth
+    {
+        get
+        {
+            if (healthComponent != null) return healthComponent.GetCurrentHealth();
+            return 0;
+        }
+    }
 
     // Implementación de IDamageable
     public void TakeDamage(int damageAmount)
     {
+        if (isDestroyed) return;
+
         // Se rompe de un solo golpe
         Die();
     }
 
     public void Die()
     {
+        if (isDestroyed) return;
+        isDestroyed = true;
+
         // 1. Efecto visual
         if (destroyVFX != null)
             Instantiate(destroyVFX, transform.position, Quaternion.identity);
@@ -42,26 +60,25 @@ public class DestructibleProp : MonoBehaviour, IDamageable
         if (possibleDrops == null || possibleDrops.Count == 0) return;
 
         // --- TIRAR DADOS ---
-        // Generamos un número entre 0 y 100. Si es menor que dropChance, dropea.
         float randomValue = Random.Range(0f, 100f);
 
         if (randomValue <= dropChance)
         {
-            // 1. Elegir un buff al azar de la lista
+            // 1. Elegir un buff al azar
             BuffEffect selectedBuff = possibleDrops[Random.Range(0, possibleDrops.Count)];
 
-            // 2. Instanciar el objeto en la posición del enemigo
+            // 2. Instanciar
             GameObject lootObj = Instantiate(lootPrefab, transform.position, Quaternion.identity);
 
+            // Física del loot (salto)
             Rigidbody2D lootRb = lootObj.GetComponent<Rigidbody2D>();
-            if (lootRb != null) // Asegúrate de que tu Loot_Item tenga un RB (Kinematic o Dynamic con drag alto)
+            if (lootRb != null)
             {
                 Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(0.5f, 1f)).normalized;
                 lootRb.AddForce(randomDir * 3f, ForceMode2D.Impulse);
             }
 
-            // 3. Inicializarlo
-            // FIXME: Esto cambia el SPRITE al icono del buff. Deberia poner un icono del item
+            // 3. Inicializar
             LootPickup pickupScript = lootObj.GetComponent<LootPickup>();
             if (pickupScript != null)
             {

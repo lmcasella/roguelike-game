@@ -23,7 +23,8 @@ public class VampireBehaviour : MonoBehaviour
     {
         if (myHealth != null)
         {
-            myHealth.Heal(2);
+            // FIXME: Deberia poder cambiarse desde el Inspector
+            myHealth.Heal(5);
         }
     }
 }

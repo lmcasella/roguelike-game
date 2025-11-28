@@ -1,47 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ConeAbilityEffect : MonoBehaviour
 {
     [Header("Configuración del Cono")]
     [SerializeField] private float range = 5f;
-    [SerializeField] private float angle = 45f; // Ángulo del cono
+    [SerializeField] private float angle = 45f; // Ángulo total de apertura
     [SerializeField] private float fearDuration = 3f;
     [SerializeField] private LayerMask enemyLayer;
 
-    [Header("Visual")]
-    [SerializeField] private GameObject particleEffect; // Opcional
+    // Getters para que el visualizador sepa cuánto medir
+    public float GetRange() => range;
+    public float GetAngle() => angle;
 
-    // Al instanciarse, calcular el cono inmediatamente
     private void Start()
     {
         CheckConeArea();
 
-        // Destruir el objeto detector después de un frame
-        Destroy(gameObject, 0.5f);
+        // El efecto es instantáneo, así que destruimos el objeto casi de inmediato
+        Destroy(gameObject, 0.1f);
     }
 
     private void CheckConeArea()
     {
-        // 1. Obtener todos los enemigos en radio circular primero
+        // 1. Detección circular inicial
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
+
+        Debug.Log($"[Fear Logic] Posición: {transform.position} | Enemigos detectados en radio: {hits.Length}");
 
         foreach (var hit in hits)
         {
             Transform enemyTransform = hit.transform;
 
-            // 2. Calcular dirección hacia el enemigo
+            // 2. Dirección hacia el enemigo
             Vector2 directionToEnemy = (enemyTransform.position - transform.position).normalized;
 
-            // 3. Calcular ángulo: 'transform.right' es hacia donde mira el "Grito"
+            // 3. Calcular ángulo respecto a donde miramos (transform.right)
             float angleToEnemy = Vector2.Angle(transform.right, directionToEnemy);
 
-            // 4. Si está dentro de la mitad del ángulo
+            // 4. Si está dentro del cono (Mitad del ángulo hacia cada lado)
             if (angleToEnemy < angle / 2f)
             {
                 // 5. Aplicar FEAR
-                EnemyAI enemyAI = hit.GetComponent<EnemyAI>();
+                EnemyAI enemyAI = hit.GetComponentInParent<EnemyAI>();
                 if (enemyAI != null)
                 {
                     enemyAI.ApplyFear(fearDuration);
@@ -50,15 +50,15 @@ public class ConeAbilityEffect : MonoBehaviour
         }
     }
 
+    // Dibujo para debug en el editor
     private void OnDrawGizmos()
     {
-        // Dibujar el cono en el editor para ajustarlo
         Gizmos.color = Color.cyan;
+        // Dibujamos las líneas del cono
         Vector3 directionUp = Quaternion.Euler(0, 0, angle / 2) * transform.right;
         Vector3 directionDown = Quaternion.Euler(0, 0, -angle / 2) * transform.right;
 
         Gizmos.DrawLine(transform.position, transform.position + directionUp * range);
         Gizmos.DrawLine(transform.position, transform.position + directionDown * range);
-        Gizmos.DrawWireSphere(transform.position, range); // El alcance máximo
     }
 }

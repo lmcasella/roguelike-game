@@ -14,6 +14,7 @@ public class LootPickup : MonoBehaviour
     private float floatSpeed = 2f;
     private float floatAmplitude = 0.1f;
     private Vector3 startPos;
+    private bool isCollected = false;
 
     private SpriteRenderer spriteRenderer;
 
@@ -23,7 +24,7 @@ public class LootPickup : MonoBehaviour
         startPos = transform.position;
     }
 
-    // Este método lo llamaremos al "Spawnear" el ítem desde un cofre o enemigo
+    // Este método se llama al morir un enemigo o romper un objeto
     public void Initialize(BuffEffect effect)
     {
         buffEffect = effect;
@@ -35,22 +36,26 @@ public class LootPickup : MonoBehaviour
 
     private void Update()
     {
-        // Pequeña animación de flotación (Juice!)
+        // FIXME: Animacion desde Animator
         transform.position = startPos + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * floatAmplitude;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isCollected) return;
+
         if (collision.CompareTag("Player"))
         {
             if (buffEffect != null)
             {
-                // INTENTAMOS aplicar el buff
+                // Se intenta aplicar el buff
                 bool wasApplied = buffEffect.Apply(collision.gameObject);
 
                 // Solo si se aplicó, destruir el objeto del suelo
                 if (wasApplied)
                 {
+                    isCollected = true;
+
                     AudioManager.Instance.PlaySoundEffect(pickupSound);
                     Destroy(gameObject);
                 }

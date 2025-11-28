@@ -44,7 +44,7 @@ public class SystemHealth : MonoBehaviour
             currentHealth = 0;
         }
 
-        // Llamar a la funcion de daño del strategy. No hace falta que sepa nada mas
+        // Llamar a la funcion de daño del strategy, nada mas
         target.TakeDamage(damageAmount);
 
         // Checkear si murio
@@ -64,6 +64,7 @@ public class SystemHealth : MonoBehaviour
         float timer = 0f;
 
         // Definir cada cuánto se aplica la cura (1 segundo)
+        // FIXME: Deberia ser configurable
         float tickInterval = 1f;
 
         while (timer < duration)

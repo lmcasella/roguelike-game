@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: No probado todavia
 public class ExplosiveProjectile : Projectile
 {
     [Header("Configuración Explosiva")]

@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   targetAbility: 2
   damageIncrease: 0
-  manaCostReduction: -2
+  manaCostReduction: -5
   extraProjectiles: 0

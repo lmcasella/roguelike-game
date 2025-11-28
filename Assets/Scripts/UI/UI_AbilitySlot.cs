@@ -68,7 +68,7 @@ public class UI_AbilitySlot : MonoBehaviour
         while (timer < duration)
         {
             timer += Time.deltaTime;
-            // Vamos vaciando el reloj: (1 - porcentaje completado)
+            // Se va vaciando el reloj: (1 - porcentaje completado)
             cooldownOverlay.fillAmount = 1f - (timer / duration);
             yield return null;
         }

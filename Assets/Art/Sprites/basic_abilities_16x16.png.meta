@@ -4843,7 +4843,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_abilities_16x16_229
+      name: triangle
       rect:
         serializedVersion: 2
         x: 384
@@ -7960,7 +7960,6 @@ TextureImporter:
       basic_abilities_16x16_226: 720963144
       basic_abilities_16x16_227: -643759113
       basic_abilities_16x16_228: -583543983
-      basic_abilities_16x16_229: 1705125403
       basic_abilities_16x16_23: 191797930
       basic_abilities_16x16_230: -971756001
       basic_abilities_16x16_231: 48652149
@@ -8184,6 +8183,7 @@ TextureImporter:
       basic_abilities_bow1: -111884248
       basic_abilities_bow2: -1054052778
       basic_abilities_bow3: 416968120
+      triangle: 1705125403
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

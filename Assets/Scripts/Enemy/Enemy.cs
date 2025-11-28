@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     [SerializeField] private int scoreValue = 10;
+    [SerializeField] private bool isBoss = false;
 
     [Header("Loot System")]
     [Tooltip("Probabilidad de soltar un objeto (0 a 100%)")]
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Awake()
     {
         healthComponent = GetComponent<SystemHealth>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         // enemyAI = GetComponent<EnemyAI>();
     }
 
@@ -65,6 +66,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
         GameEvents.ReportEnemyDied(this, scoreValue);
 
+        if (isBoss)
+        {
+            GameEvents.ReportBossDied();
+        }
+
         if (deathSound != null) AudioManager.Instance.PlaySoundEffect(deathSound);
 
         Destroy(gameObject);
@@ -77,7 +83,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if (possibleDrops == null || possibleDrops.Count == 0) return;
 
         // --- TIRAR DADOS ---
-        // Generamos un número entre 0 y 100. Si es menor que dropChance, dropea.
+        // Generar un número entre 0 y 100. Si es menor que dropChance, dropea.
         float randomValue = Random.Range(0f, 100f);
 
         if (randomValue <= dropChance)
@@ -89,14 +95,14 @@ public class Enemy : MonoBehaviour, IDamageable
             GameObject lootObj = Instantiate(lootPrefab, transform.position, Quaternion.identity);
 
             Rigidbody2D lootRb = lootObj.GetComponent<Rigidbody2D>();
-            if (lootRb != null) // Asegúrate de que tu Loot_Item tenga un RB (Kinematic o Dynamic con drag alto)
+            if (lootRb != null)
             {
                 Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(0.5f, 1f)).normalized;
                 lootRb.AddForce(randomDir * 3f, ForceMode2D.Impulse);
             }
 
             // 3. Inicializarlo
-            // FIXME: Esto cambia el SPRITE al icono del buff. Deberia poner un icono del item
+            // Pone el icono y el buffeffect
             LootPickup pickupScript = lootObj.GetComponent<LootPickup>();
             if (pickupScript != null)
             {

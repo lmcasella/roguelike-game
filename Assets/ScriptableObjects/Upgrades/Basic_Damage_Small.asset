@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5aa86cd27007fc4a959c50df6b0c5ae, type: 3}
   m_Name: Basic_Damage_Small
   m_EditorClassIdentifier: 
-  description: "+2 Da\xF1o a Ataque Basico"
+  description: "+4 Da\xF1o a Ataque Basico"
+  icon: {fileID: 0}
   targetAbility: 0
-  damageIncrease: 2
+  damageIncrease: 4
   manaCostReduction: 0
   extraProjectiles: 0

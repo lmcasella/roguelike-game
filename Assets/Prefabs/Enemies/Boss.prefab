@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2189747713863336631}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.26, y: -8.88, z: 0}
+  m_LocalPosition: {x: -61.26, y: -8.88, z: -5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -720075835, guid: 460f2f7a471f9ee45ad4f988f4a58bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  detectionRange: 10
+  detectionRange: 30
   attackRange: 4.5
   attacksPerSecond: 1
   useFleeBehavior: 0
@@ -152,10 +152,6 @@ MonoBehaviour:
   - {fileID: 7945031538994815678, guid: 55c61babfb5104b4681168ca7714eefa, type: 3}
   - {fileID: 7945031538994815678, guid: e9cfe91cf43b7e244896d226d93d8c72, type: 3}
   - {fileID: 7945031538994815678, guid: 2d8cab82ec1dc984d91158336b208ab2, type: 3}
-  spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   timeBetweenWaves: 10
 --- !u!95 &6455263225870793930
 Animator:
@@ -190,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03b51676a2d0e94f85b7ad91dd44ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 350
   currentHealth: 0
 --- !u!70 &4708886811812620950
 CapsuleCollider2D:
@@ -240,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  isBoss: 1
   dropChance: 30
   lootPrefab: {fileID: 0}
   possibleDrops: []

@@ -56,10 +56,18 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 6a640235aa0f5394695b00a1e96e8070, type: 2}
+    - target: {fileID: 2714609305143054615, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: maxHealth
+      value: 115
+      objectReference: {fileID: 0}
     - target: {fileID: 8898530146547866417, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1282251880, guid: 460f2f7a471f9ee45ad4f988f4a58bac, type: 3}
+    - target: {fileID: 8898530146547866417, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8969162342484467966, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: m_Name
       value: Enemy_Ranged_Archer
@@ -160,13 +168,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  detectionRange: 20
+  detectionRange: 30
   attackRange: 5
   attacksPerSecond: 1
   useFleeBehavior: 0
   attackChargeTime: 0.5
   chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  animator: {fileID: 0}
   target: {fileID: 0}
   projectileDamage: 10
   projectilePrefab: {fileID: 3343291588373904673, guid: b3314e58e61786e498fccdb3e3331099, type: 3}

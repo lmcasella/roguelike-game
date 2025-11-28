@@ -10,11 +10,11 @@ public class VampireUpgrade : UpgradeEffect
         if (behavior == null)
         {
             target.AddComponent<VampireBehaviour>();
-            Debug.Log("¡Ahora eres un vampiro!");
+            Debug.Log("Vampirismo activado");
         }
         else
         {
-            Debug.Log("Ya tienes vampirismo.");
+            Debug.Log("Ya tenes vampirismo");
         }
     }
 }

@@ -51,7 +51,7 @@ public class GameManager : Singleton<GameManager>
             savedExtraProjectiles = stats.basicExtraProjectiles;
         }
 
-        // Si tienes el componente VampireBehaviour, guardamos true
+        // Verificar si el jugador tiene el perk de vampiro
         hasVampirePerk = (stats.GetComponent<VampireBehaviour>() != null);
 
         hasSavedData = true;
@@ -81,7 +81,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ResetRun()
     {
-        // Llamar a esto en Game Over o Menu Principal para reiniciar todo
+        // Llamar a esto en game over o main menu para reiniciar todo
         savedCurrentHealth = -1;
         savedCurrentMana = -1;
     }

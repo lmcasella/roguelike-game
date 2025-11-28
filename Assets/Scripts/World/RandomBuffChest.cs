@@ -41,7 +41,7 @@ public class RandomBuffChest : MonoBehaviour, IInteractable
         isOpen = true;
         spriteRenderer.sprite = openSprite;
 
-        // --- LÓGICA ALEATORIA ---
+        // --- LOGICA ALEATORIA ---
         // 1. Elegir un índice al azar
         int randomIndex = Random.Range(0, possibleBuffs.Count);
         BuffEffect selectedBuff = possibleBuffs[randomIndex];

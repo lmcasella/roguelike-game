@@ -16,4 +16,4 @@ MonoBehaviour:
   pickupSprite: {fileID: 1203376217, guid: ff2a8bd1da9b83c4a8d8a8b9b985447f, type: 3}
   buffName: Mana infinito
   description: 
-  duration: 5
+  duration: 10

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 545936827, guid: 460f2f7a471f9ee45ad4f988f4a58bac, type: 3}
+    - target: {fileID: 3093996735870272340, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3247985404075725293, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_Size.x
       value: 0.69652176
@@ -116,6 +120,10 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 31d5bd15699200f4eb73c7f014e7f579, type: 2}
+    - target: {fileID: 8368182205672229234, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: maxHealth
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
     m_RemovedGameObjects: []
@@ -142,14 +150,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b347dc63d675b04ca77005fd8ff6a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  detectionRange: 10
+  moveSpeed: 2.8
+  detectionRange: 30
   attackRange: 1
   attacksPerSecond: 1
   useFleeBehavior: 0
   attackChargeTime: 0.5
   chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  animator: {fileID: 0}
   target: {fileID: 0}
+  damage: 15
   miniEnemyPrefab: {fileID: 2456989450297178692, guid: f30a313d1735876458cc27dcab545278, type: 3}
   amountToSpawn: 2

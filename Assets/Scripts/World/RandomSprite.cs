@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Asigna un sprite al azar de una lista dada al iniciar el juego o al validar en el editor
 [RequireComponent(typeof(SpriteRenderer))]
 public class RandomSprite : MonoBehaviour
 {

@@ -328,10 +328,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_11
+      name: boss_tile_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 640
         width: 32
         height: 32
@@ -349,7 +349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_12
+      name: boss_tile_2
       rect:
         serializedVersion: 2
         x: 32
@@ -664,7 +664,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_27
+      name: blue_floor_v_7
       rect:
         serializedVersion: 2
         x: 32
@@ -685,11 +685,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_28
+      name: blue_floor_v_8
       rect:
         serializedVersion: 2
         x: 64
-        y: 544
+        y: 545
         width: 32
         height: 32
       alignment: 0
@@ -706,7 +706,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_29
+      name: blue_floor_v_9
       rect:
         serializedVersion: 2
         x: 96
@@ -815,7 +815,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 512
+        y: 513
         width: 32
         height: 32
       alignment: 0
@@ -916,7 +916,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_39
+      name: blue_floor_v_4
       rect:
         serializedVersion: 2
         x: 32
@@ -937,7 +937,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_40
+      name: blue_floor_v_5
       rect:
         serializedVersion: 2
         x: 64
@@ -958,10 +958,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_41
+      name: blue_floor_v_6
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 480
         width: 32
         height: 32
@@ -1798,7 +1798,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_81
+      name: boss_spawn
       rect:
         serializedVersion: 2
         x: 448
@@ -2428,7 +2428,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_111
+      name: skeleton_1
       rect:
         serializedVersion: 2
         x: 0
@@ -2449,7 +2449,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_112
+      name: skeleton_2
       rect:
         serializedVersion: 2
         x: 32
@@ -2470,7 +2470,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_113
+      name: blood_1
       rect:
         serializedVersion: 2
         x: 0
@@ -2491,7 +2491,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_114
+      name: blood_2
       rect:
         serializedVersion: 2
         x: 32
@@ -2617,7 +2617,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_120
+      name: tomb_1
       rect:
         serializedVersion: 2
         x: 96
@@ -2638,7 +2638,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_121
+      name: tomb_2
       rect:
         serializedVersion: 2
         x: 128
@@ -2659,7 +2659,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_122
+      name: tomb_3
       rect:
         serializedVersion: 2
         x: 160
@@ -2795,6 +2795,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      blood_1: -664971206
+      blood_2: -841833414
       blue_floor_1: -1217677527
       blue_floor_2: -1627507833
       blue_floor_3: 1125437401
@@ -2802,7 +2804,16 @@ TextureImporter:
       blue_floor_v_1: -851241299
       blue_floor_v_2: 902394260
       blue_floor_v_3: -1949347784
+      blue_floor_v_4: -775452900
+      blue_floor_v_5: 1566356765
+      blue_floor_v_6: 1111432643
+      blue_floor_v_7: 1799172981
+      blue_floor_v_8: -901676868
+      blue_floor_v_9: -978927961
       boss_door: 91948884
+      boss_spawn: -945839128
+      boss_tile_1: -702320281
+      boss_tile_2: -2018278965
       chest_close: -1140315589
       chest_open: -1190522672
       dungeon_wall_1: 1273054069
@@ -2845,6 +2856,8 @@ TextureImporter:
       petrol_floor_7: 241813325
       rotten_door_close: 213600698
       rotten_door_open: -1357546272
+      skeleton_1: -866763863
+      skeleton_2: 571648843
       spike_off: 597979622
       spike_on: 561598344
       step_down: -1669481371
@@ -2854,20 +2867,11 @@ TextureImporter:
       stone_wall_3: 64903715
       tiles_0: -2112509216
       tiles_1: 1576274662
-      tiles_11: -702320281
-      tiles_111: -866763863
-      tiles_112: 571648843
-      tiles_113: -664971206
-      tiles_114: -841833414
       tiles_115: -1213602210
       tiles_116: -1815083480
       tiles_117: -998660702
       tiles_118: -2028145231
       tiles_119: -2110328853
-      tiles_12: -2018278965
-      tiles_120: -1416001612
-      tiles_121: 856906147
-      tiles_122: 1837224415
       tiles_123: 1259621613
       tiles_127: 1732291184
       tiles_17: 830681458
@@ -2876,18 +2880,12 @@ TextureImporter:
       tiles_24: -1194881718
       tiles_25: 788204641
       tiles_26: 687831163
-      tiles_27: 1799172981
-      tiles_28: -901676868
-      tiles_29: -978927961
       tiles_30: 733223598
       tiles_31: -1189217255
       tiles_32: -1788934671
       tiles_36: 1893687616
       tiles_37: -900320493
       tiles_38: -2036147642
-      tiles_39: -775452900
-      tiles_40: 1566356765
-      tiles_41: 1111432643
       tiles_42: 1821979442
       tiles_43: -104220168
       tiles_44: 1533684086
@@ -2907,11 +2905,13 @@ TextureImporter:
       tiles_79: 1142227014
       tiles_8: 1480940120
       tiles_80: -751842442
-      tiles_81: -945839128
       tiles_88: 1170244785
       tiles_90: -1936468107
       tiles_91: 1413289743
       tiles_92: 1079394308
+      tomb_1: -1416001612
+      tomb_2: 856906147
+      tomb_3: 1837224415
       tree_1: -556978238
       tree_2: -570820709
       tree_3: -983001975

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1257108986, guid: 460f2f7a471f9ee45ad4f988f4a58bac, type: 3}
+    - target: {fileID: 3093996735870272340, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3247985404075725293, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_Size.x
       value: 0.80744934
@@ -38,19 +42,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.47982883
+      value: -72.410446
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4595888
+      value: -1.7706724
       objectReference: {fileID: 0}
     - target: {fileID: 3350006615895850027, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_LocalPosition.z
@@ -116,6 +120,10 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 31d5bd15699200f4eb73c7f014e7f579, type: 2}
+    - target: {fileID: 8368182205672229234, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: maxHealth
+      value: 135
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
     m_RemovedGameObjects: []
@@ -143,18 +151,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  detectionRange: 20
+  detectionRange: 30
   attackRange: 5
   attacksPerSecond: 1
   useFleeBehavior: 0
   attackChargeTime: 1
   chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  animator: {fileID: 0}
   target: {fileID: 0}
   chargeSpeed: 15
   chargeDuration: 0.5
   impactRadius: 2
-  explosionDamage: 10
+  explosionDamage: 20
   impactVFX: {fileID: 0}
   playerLayer:
     serializedVersion: 2

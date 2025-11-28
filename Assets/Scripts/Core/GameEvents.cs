@@ -38,4 +38,8 @@ public static class GameEvents
 
     public static event Action<BuffEffect, float> OnBuffApplied;
     public static void ReportBuffApplied(BuffEffect buff, float duration) => OnBuffApplied?.Invoke(buff, duration);
+
+    // --- Evento de Victoria ---
+    public static event Action OnBossDied;
+    public static void ReportBossDied() => OnBossDied?.Invoke();
 }

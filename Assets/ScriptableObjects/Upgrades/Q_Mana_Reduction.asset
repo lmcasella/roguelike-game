@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5aa86cd27007fc4a959c50df6b0c5ae, type: 3}
   m_Name: Q_Mana_Reduction
   m_EditorClassIdentifier: 
-  description: -5 Coste de Mana a FireBall (Q)
+  description: -2 Coste de Mana a FireBall (Q)
   icon: {fileID: 0}
   targetAbility: 1
   damageIncrease: 0
-  manaCostReduction: -3
+  manaCostReduction: -2
   extraProjectiles: 0
