@@ -11,7 +11,7 @@ Un videojuego de acción y exploración de mazmorras en 2D con mecánicas Roguel
   * Movimiento en 2D.
   * Sistema de ataque apuntado con el mouse.
   * Distintos tipos de habilidades para agregar variedad al combate: Ataque basico, habilidad Bola de Fuego, habilidad Miedo, habilidad Dash.
-* **Interacción y Entorno:** Sistema de salud, gestión de maná, apertura de puertas y recolección de recompensas en objetos del mapa.
+* **Interacción y Entorno:** Sistema de salud, gestión de maná, apertura de puertas y recolección de recompensas temporales en objetos del mapa.
 * **Enemigos y Jefes:** Variedad de enemigos con distintos tipos de ataque (cuerpo a cuerpo y a distancia) y un enfrentamiento final contra un Jefe.
 * **Progresión y Persistencia:** Conservá tus estadísticas entre niveles. Mejorá tu daño, aumentá tu cantidad de proyectiles o adquirí habilidades pasivas al finalizar cada sala.
 
