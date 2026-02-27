@@ -7,7 +7,8 @@ Un videojuego de acción y exploración de mazmorras en 2D con mecánicas Roguel
 ## 🎮 Características Principales
 
 * **Sistema de Salas:** Explorá 3 mazmorras interconectadas. Al entrar, las puertas se bloquean y deberás sobrevivir a oleadas de enemigos antes de poder avanzar.
-* **Combate:** * Movimiento en 2D.
+* **Combate:**
+  * Movimiento en 2D.
   * Sistema de ataque apuntado con el mouse.
   * Distintos tipos de habilidades para agregar variedad al combate: Ataque basico, habilidad Bola de Fuego, habilidad Miedo, habilidad Dash.
 * **Interacción y Entorno:** Sistema de salud, gestión de maná, apertura de puertas y recolección de recompensas en objetos del mapa.
