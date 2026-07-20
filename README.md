@@ -1,4 +1,4 @@
-# 🗡️ Hacia las Profundidades
+# 🗡️ Into the Unknown
 
 [![Jugar en itch.io](https://img.shields.io/badge/Jugar_en-itch.io-FA5C5C?style=for-the-badge&logo=itch.io)](https://kezgan.itch.io/hacia-las-profundidades)
 
