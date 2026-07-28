@@ -27,6 +27,10 @@ public static class GameEvents
     public static event Action<Enemy, int> OnEnemyDied;
     public static void ReportEnemyDied(Enemy enemy, int scoreValue) => OnEnemyDied?.Invoke(enemy, scoreValue);
 
+    // Evento para cuando nace cualquier enemigo
+    public static event Action<Enemy> OnEnemySpawned;
+    public static void ReportEnemySpawned(Enemy enemy) => OnEnemySpawned?.Invoke(enemy);
+
     // --- Eventos de Habilidades ---
     // Avisa que cambió la habilidad en un slot (para poner el icono nuevo)
     public static event Action<AbilitySlot, Ability> OnAbilityEquipped;

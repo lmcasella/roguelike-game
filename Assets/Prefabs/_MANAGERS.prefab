@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7827366560503386781}
   - component: {fileID: 9029546465616005537}
   - component: {fileID: 1297513068677893669}
+  - component: {fileID: 4447911585334528367}
   m_Layer: 0
   m_Name: _MANAGERS
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  hasVampirePerk: 0
 --- !u!114 &7827366560503386781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3795263540961665513, guid: 38beae0576781ec429053922f8346d37, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.178
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -254,3 +256,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4447911585334528367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110579440509270836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b445c7055cea6d41b150b598e2ef1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabNumber: {fileID: 4925643726153051305, guid: 9de3d730357ee904483894ab52c44e1e, type: 3}
+  initialPoolSize: 20
+  enemyDamageColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  playerDamageColor: {r: 1, g: 0, b: 0, a: 1}

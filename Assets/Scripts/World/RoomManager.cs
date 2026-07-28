@@ -56,6 +56,7 @@ public class RoomManager : MonoBehaviour
 
         // Suscribirse al evento global de muerte
         GameEvents.OnEnemyDied += OnEnemyDiedHandler;
+        GameEvents.OnEnemySpawned += OnEnemySpawnedHandler;
     }
 
     void Update()
@@ -102,9 +103,25 @@ public class RoomManager : MonoBehaviour
         Enemy enemyScript = newEnemyObj.GetComponent<Enemy>();
         if (enemyScript != null)
         {
-            activeEnemies.Add(enemyScript);
+            // Como OnEnable ya avisó por evento, verificamos para no duplicarlo en la lista
+            if (!activeEnemies.Contains(enemyScript))
+            {
+                activeEnemies.Add(enemyScript);
+            }
             enemiesSpawnedCount++;
             Debug.Log($"Spawned Enemy ({enemiesSpawnedCount}/{totalEnemiesToKill})");
+        }
+    }
+
+    // Nuevo método para escuchar nacimientos
+    private void OnEnemySpawnedHandler(Enemy newEnemy)
+    {
+        if (!roomActive) return;
+
+        // Si el enemigo no está en nuestra lista de activos, lo agregamos
+        if (!activeEnemies.Contains(newEnemy))
+        {
+            activeEnemies.Add(newEnemy);
         }
     }
 
@@ -122,8 +139,10 @@ public class RoomManager : MonoBehaviour
             enemiesKilledCount++;
             Debug.Log($"Enemy Killed. Progress: {enemiesKilledCount}/{totalEnemiesToKill}");
 
-            // Chequeo de Victoria
-            if (enemiesKilledCount >= totalEnemiesToKill)
+            // NUEVA CONDICIÓN DE VICTORIA:
+            // 1. Ya se spawneó la cantidad meta (ej: los 10 orcos)
+            // 2. Y la lista de enemigos activos llegó a 0 (ya no quedan ni orcos ni mini slimes)
+            if (enemiesSpawnedCount >= totalEnemiesToKill && activeEnemies.Count == 0)
             {
                 ClearRoom();
             }
@@ -138,6 +157,7 @@ public class RoomManager : MonoBehaviour
 
         OpenDoors();
         GameEvents.OnEnemyDied -= OnEnemyDiedHandler;
+        GameEvents.OnEnemySpawned -= OnEnemySpawnedHandler;
 
         if (!isBossRoom)
         {

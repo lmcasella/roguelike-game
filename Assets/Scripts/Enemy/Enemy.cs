@@ -31,10 +31,17 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private SystemHealth healthComponent;
     private Animator animator;
+    public event System.Action OnBeforeDeath;
 
     // private EnemyAI enemyAI;
 
     public int CurrentHealth => healthComponent.GetCurrentHealth();
+
+    private void OnEnable()
+    {
+        // Apenas el enemigo se activa en la escena, avisa al manager
+        GameEvents.ReportEnemySpawned(this);
+    }
 
     private void Awake()
     {
@@ -63,6 +70,8 @@ public class Enemy : MonoBehaviour, IDamageable
         Debug.Log("Enemy died");
 
         TryDropLoot();
+
+        OnBeforeDeath?.Invoke();
 
         GameEvents.ReportEnemyDied(this, scoreValue);
 

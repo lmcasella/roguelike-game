@@ -48,6 +48,9 @@ public class SystemHealth : MonoBehaviour
         // Llamar a la funcion de daño del strategy, nada mas
         target.TakeDamage(damageAmount);
 
+        bool isPlayer = gameObject.CompareTag("Player");
+        DamageNumberManager.Instance.SpawnDamageNumber(transform.position, damageAmount, isPlayer);
+
         // Checkear si murio
         if (currentHealth == 0)
         {
