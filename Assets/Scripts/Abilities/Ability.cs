@@ -5,6 +5,8 @@ using UnityEngine;
 // Define diferentes tipos de slots para habilidades
 public enum AbilitySlot { Basic, Ability1, Ability2, Dash }
 
+public enum AimType { Instant, Cone, Area }
+
 [CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/New Ability")]
 public class Ability : ScriptableObject
 {
@@ -22,6 +24,9 @@ public class Ability : ScriptableObject
     public int damage = 10;
     public int manaCost = 0;
     public float cooldown = 0.5f;
+
+    [Header("Configuración de Apuntado")]
+    public AimType aimType = AimType.Instant;
 
     // TODO: Tipos de elementos...
 }

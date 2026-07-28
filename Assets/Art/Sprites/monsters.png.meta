@@ -93,6 +93,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1336,7 +1349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monsters_59
+      name: angel_boss
       rect:
         serializedVersion: 2
         x: 0
@@ -1451,6 +1464,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      angel_boss: -231982270
       archer_ranged: 1282251880
       deadPriest_ranged: 1517358206
       dkCharge_Melee: 1257108986
@@ -1502,7 +1516,6 @@ TextureImporter:
       monsters_56: 1540533426
       monsters_57: -1040445145
       monsters_58: 1286614154
-      monsters_59: -231982270
       monsters_6: -990944005
       monsters_61: 1517838496
       monsters_62: -161057108

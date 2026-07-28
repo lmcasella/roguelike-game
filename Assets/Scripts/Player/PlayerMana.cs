@@ -74,6 +74,18 @@ public class PlayerMana : MonoBehaviour
         Debug.Log("Fin del Maná Infinito");
     }
 
+    // Restaurar maná actual (ej. poción) sin alterar el límite máximo
+    public void RestoreMana(int amount)
+    {
+        currentMana += amount;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
+
+        GameEvents.ReportPlayerManaChanged(currentMana, maxMana);
+    }
+
     // Incrementar el mana maximo (ej. upgrade)
     public void IncrementMana(int amount)
     {

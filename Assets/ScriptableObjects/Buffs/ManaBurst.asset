@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ManaBurst
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 4e94bced6e9277942ac83c91039bc270, type: 3}
-  pickupSprite: {fileID: 1203376217, guid: ff2a8bd1da9b83c4a8d8a8b9b985447f, type: 3}
+  pickupSprite: {fileID: -240646862, guid: ff2a8bd1da9b83c4a8d8a8b9b985447f, type: 3}
   buffName: Mana infinito
   description: 
   duration: 10

@@ -8,7 +8,11 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifetime = 3f;
+    [SerializeField] private float lifetime;
+
+    [Header("Configuración de Bando")]
+    [Tooltip("Marcar en true SOLO en los proyectiles de los enemigos")]
+    [SerializeField] private bool isEnemyProjectile = false;
 
     // Daño final que envia PlayerAbilities
     protected int damage;
@@ -21,6 +25,18 @@ public class Projectile : MonoBehaviour
     private GameObject owner;
 
     public void SetProjSpeed(int value) { speed = value; }
+
+    private void OnEnable()
+    {
+        // Suscribirse al evento
+        GameEvents.OnRoomCleared += DestroyProjectile;
+    }
+
+    private void OnDisable()
+    {
+        // Desuscribirse del evento
+        GameEvents.OnRoomCleared -= DestroyProjectile;
+    }
 
     private void Awake()
     {
@@ -74,5 +90,13 @@ public class Projectile : MonoBehaviour
 
         // 3. Destruir proyectil al impactar
         Destroy(gameObject);
+    }
+
+    public void DestroyProjectile()
+    {
+        if (isEnemyProjectile)
+        {
+            Destroy(gameObject);
+        }
     }
 }

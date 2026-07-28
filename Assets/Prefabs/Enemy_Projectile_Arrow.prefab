@@ -184,7 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  lifetime: 3
+  lifetime: 0.5
+  isEnemyProjectile: 1
   explosionRadius: 0
   explosionVFX: {fileID: 0}
   damageLayer:

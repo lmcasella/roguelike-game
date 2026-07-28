@@ -2,42 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class AbilityStatsContainer
+{
+    public int damageBonus = 0;
+    public int manaCostReduction = 0;
+    public int extraProjectiles = 0;
+    public float cooldownReduction = 0f;
+    public float moveSpeedBonus = 0f;
+
+    // Esta función procesa la matemática según el tipo de stat
+    public void AddModifier(StatModifier mod)
+    {
+        switch (mod.statType)
+        {
+            case StatType.Damage:
+                damageBonus += Mathf.RoundToInt(mod.amount);
+                break;
+            case StatType.ManaCost:
+                manaCostReduction += Mathf.RoundToInt(mod.amount);
+                break;
+            case StatType.ExtraProjectiles:
+                extraProjectiles += Mathf.RoundToInt(mod.amount);
+                break;
+            case StatType.CooldownReduction:
+                cooldownReduction += mod.amount;
+                break;
+            case StatType.MoveSpeed:
+                moveSpeedBonus += mod.amount;
+                break;
+        }
+    }
+}
+
 //NOTE: Guardar todos los stats del Player
 public class PlayerStats : MonoBehaviour
 {
-    [Header("Basic Attack (Fire1)")]
-    public int basicDamageBonus = 0;
-    public int basicExtraProjectiles = 0;
+    [Header("Estadísticas Globales")]
+    public float extraMoveSpeed = 0f;
+    public int extraMaxHealth = 0;
+    public int extraMaxMana = 0;
 
-    [Header("Ability 1 (Q)")]
-    public int ability1DamageBonus = 0;
-    public int ability1ManaCostBonus = 0;
+    [Header("Estadísticas por Habilidad")]
+    public AbilityStatsContainer basicStats = new AbilityStatsContainer();
+    public AbilityStatsContainer ability1Stats = new AbilityStatsContainer();
+    public AbilityStatsContainer ability2Stats = new AbilityStatsContainer();
 
-    [Header("Ability 2 (E)")]
-    public int ability2DamageBonus = 0;
-    public int ability2ManaCostBonus = 0;
-
-    //[Header("Ability 3 (E)")]
-    //public int ability3DamageBonus = 0;
-    //public int ability3ManaCostBonus = 0;
-
-    // Se utiliza en la UI_RewardScreen.cs
-    public void ApplyUpgrade(AbilityUpgrade upgrade)
+    // Este es el método que recibe la lista desde AbilityUpgrade
+    public void ApplyModifiers(AbilitySlot slot, List<StatModifier> modifiers)
     {
-        switch (upgrade.targetAbility)
+        AbilityStatsContainer targetContainer = GetContainerForSlot(slot);
+
+        if (targetContainer == null) return;
+
+        // Iteramos sobre todos los modificadores de la carta que eligió el jugador
+        foreach (StatModifier mod in modifiers)
         {
-            case AbilitySlot.Basic:
-                basicDamageBonus += upgrade.damageIncrease;
-                basicExtraProjectiles += upgrade.extraProjectiles;
-                break;
-            case AbilitySlot.Ability1:
-                ability1DamageBonus += upgrade.damageIncrease;
-                ability1ManaCostBonus += upgrade.manaCostReduction;
-                break;
-            case AbilitySlot.Ability2:
-                ability2DamageBonus += upgrade.damageIncrease;
-                ability2ManaCostBonus += upgrade.manaCostReduction;
-                break;
+            targetContainer.AddModifier(mod);
+        }
+    }
+
+    // Método auxiliar para aislar la lógica de selección y mantener limpio el código
+    public AbilityStatsContainer GetContainerForSlot(AbilitySlot slot)
+    {
+        switch (slot)
+        {
+            case AbilitySlot.Basic: return basicStats;
+            case AbilitySlot.Ability1: return ability1Stats;
+            case AbilitySlot.Ability2: return ability2Stats;
+            default: return null;
         }
     }
 }

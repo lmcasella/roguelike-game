@@ -47,8 +47,8 @@ public class GameManager : Singleton<GameManager>
 
         if (stats != null)
         {
-            savedDamageBonus = stats.basicDamageBonus;
-            savedExtraProjectiles = stats.basicExtraProjectiles;
+            savedDamageBonus = stats.basicStats.damageBonus;
+            savedExtraProjectiles = stats.basicStats.extraProjectiles;
         }
 
         // Verificar si el jugador tiene el perk de vampiro

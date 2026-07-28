@@ -93,8 +93,8 @@ public class Player : MonoBehaviour, IDamageable
 
             // 3. Aplicar Stats de Ataque
             var statsComp = GetComponent<PlayerStats>();
-            statsComp.basicDamageBonus = dmgBonus;
-            statsComp.basicExtraProjectiles = extraProj;
+            statsComp.basicStats.damageBonus = dmgBonus;
+            statsComp.basicStats.extraProjectiles = extraProj;
 
             // 4. Re-aplicar Upgrades especiales
             if (GameManager.Instance.hasVampirePerk)
@@ -216,7 +216,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (dashAbilityData != null)
         {
-            GameEvents.ReportAbilityCooldownStarted(AbilitySlot.Dash, dashCooldown);
+            GameEvents.ReportAbilityCooldownStarted(AbilitySlot.Dash, dashCooldown + dashDuration);
         }
 
         // 1. Guardar velocidad del dash

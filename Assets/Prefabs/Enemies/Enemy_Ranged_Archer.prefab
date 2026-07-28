@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 8716972187696596512, guid: 85b151f75ea86644e839fb14524d0a1b, type: 3}
     - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: possibleDrops.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: possibleDrops.Array.data[0]
@@ -55,7 +55,11 @@ PrefabInstance:
     - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: possibleDrops.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 6a640235aa0f5394695b00a1e96e8070, type: 2}
+      objectReference: {fileID: 11400000, guid: ac46a43a35152c24a9ef312d65429ea9, type: 2}
+    - target: {fileID: 2108982817535819960, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
+      propertyPath: possibleDrops.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: ac46a43a35152c24a9ef312d65429ea9, type: 2}
     - target: {fileID: 2714609305143054615, guid: 095b60aa7f8b41043a425bdb45aa33ca, type: 3}
       propertyPath: maxHealth
       value: 115

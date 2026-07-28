@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   lifetime: 1
+  isPlayerProjectile: 1
   explosionRadius: 1.3
   explosionVFX: {fileID: 0}
   damageLayer:

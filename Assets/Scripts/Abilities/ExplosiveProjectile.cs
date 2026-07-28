@@ -40,12 +40,15 @@ public class ExplosiveProjectile : Projectile
         foreach (var hit in hits)
         {
             // Buscamos enemigos (o cualquier cosa rompible)
-            IDamageable target = hit.GetComponent<IDamageable>();
+            //IDamageable target = hit.GetComponent<IDamageable>();
+
+            // Usamos SystemHealth para mantener la misma estructura que Projectile.cs
+            SystemHealth targetHealth = hit.GetComponentInParent<SystemHealth>();
 
             // Evitamos dañarnos a nosotros mismos si el player está cerca
-            if (target != null && !hit.CompareTag("Player"))
+            if (targetHealth != null && !hit.CompareTag("Player"))
             {
-                target.TakeDamage(damage); // 'damage' viene heredado de Projectile
+                targetHealth.DealDamage(damage); // 'damage' viene heredado de Projectile
             }
         }
 

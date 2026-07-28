@@ -13,7 +13,9 @@ public class PlayerAbilities : MonoBehaviour
 
     [Header("Aiming Visuals")]
     [SerializeField] private GameObject fearConeVisual;
-    private bool isAimingFear = false;
+    //private bool isAimingFear = false;
+    private bool isAiming = false; // Reemplaza a isAimingFear
+    private AbilitySlot currentlyAimingSlot; // Guarda el slot que vamos a disparar al hacer clic
 
     private PlayerMana playerMana;
     private PlayerStats playerStats;
@@ -83,7 +85,7 @@ public class PlayerAbilities : MonoBehaviour
         // --- Input ---
 
         // Lógica de Apuntado
-        if (isAimingFear)
+        if (isAiming)
         {
             HandleAimingLogic();
         }
@@ -91,14 +93,14 @@ public class PlayerAbilities : MonoBehaviour
         // Basic Attack (Fire1)
         if (Input.GetButton("Fire1"))
         {
-            TryUseAbility(AbilitySlot.Basic);
+            TryUseOrAimAbility(AbilitySlot.Basic);
         }
 
         //IMPORTANT: GetKeyDown es mejor para no spammear teclas
         // Ability 1 (Q)
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            TryUseAbility(AbilitySlot.Ability1);
+            TryUseOrAimAbility(AbilitySlot.Ability1);
         }
 
         // Ability 2 (E)
@@ -109,31 +111,55 @@ public class PlayerAbilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ToggleFearAiming();
+            TryUseOrAimAbility(AbilitySlot.Ability2);
         }
 
         // Ability 3 (Shift)
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            TryUseAbility(AbilitySlot.Dash);
+            TryUseOrAimAbility(AbilitySlot.Dash);
         }
     }
 
-    private void ToggleFearAiming()
+    // Método intermedio para decidir si se apunta o se dispara directo
+    private void TryUseOrAimAbility(AbilitySlot slot)
     {
-        // Si no tenemos la habilidad equipada o está en cooldown, no hacemos nada
-        if (!equippedAbilities.ContainsKey(AbilitySlot.Ability2)) return;
-        if (Time.time < abilityCooldowns[AbilitySlot.Ability2])
+        if (!equippedAbilities.ContainsKey(slot)) return;
+        if (Time.time < abilityCooldowns[slot]) return;
+
+        Ability ability = equippedAbilities[slot];
+
+        if (ability.aimType == AimType.Cone)
         {
-            Debug.Log("Fear en Cooldown");
+            ToggleAiming(slot);
+        }
+        else
+        {
+            TryUseAbility(slot); // Disparo instantáneo
+        }
+    }
+
+    private void ToggleAiming(AbilitySlot slot)
+    {
+        if (!equippedAbilities.ContainsKey(slot)) return;
+
+        if (Time.time < abilityCooldowns[slot])
+        {
+            Debug.Log($"La habilidad en {slot} está en Cooldown");
             return;
         }
 
-        isAimingFear = !isAimingFear; // Interruptor
+        isAiming = !isAiming;
+
+        // Guardamos en memoria qué habilidad estamos preparando para disparar
+        if (isAiming)
+        {
+            currentlyAimingSlot = slot;
+        }
 
         if (fearConeVisual != null)
         {
-            fearConeVisual.SetActive(isAimingFear);
+            fearConeVisual.SetActive(isAiming);
         }
     }
 
@@ -152,10 +178,11 @@ public class PlayerAbilities : MonoBehaviour
         // 2. DISPARAR CON CLIC IZQUIERDO
         if (Input.GetMouseButtonDown(0)) // Clic izquierdo
         {
-            TryUseAbility(AbilitySlot.Ability2); // Dispara la habilidad real
+            // Dispara la habilidad dinámica que guardamos al presionar la tecla
+            TryUseAbility(currentlyAimingSlot);
 
             // Apagamos el modo apuntar
-            isAimingFear = false;
+            isAiming = false;
             if (fearConeVisual != null) fearConeVisual.SetActive(false);
 
             // Evitar Fire1 al tirar la E
@@ -172,7 +199,7 @@ public class PlayerAbilities : MonoBehaviour
         // 3. CANCELAR CON CLIC DERECHO
         if (Input.GetMouseButtonDown(1))
         {
-            isAimingFear = false;
+            isAiming = false;
             if (fearConeVisual != null) fearConeVisual.SetActive(false);
         }
     }
@@ -203,23 +230,19 @@ public class PlayerAbilities : MonoBehaviour
         int finalManaCost = ability.manaCost;
         int finalProjectiles = 1;
 
-        // 5. Switch para aplicar los bonus de PlayerStats
-        switch (slot)
+        // 5. Obtenemos el contenedor de stats correspondiente a este slot
+        AbilityStatsContainer slotStats = playerStats.GetContainerForSlot(slot);
+
+        if (slotStats != null)
         {
-            case AbilitySlot.Basic:
-                finalDamage += playerStats.basicDamageBonus;
-                finalProjectiles += playerStats.basicExtraProjectiles;
-                break;
+            // Sumamos todos los stats de forma directa y uniforme
+            finalDamage += slotStats.damageBonus;
+            finalManaCost += slotStats.manaCostReduction;
+            finalProjectiles += slotStats.extraProjectiles;
 
-            case AbilitySlot.Ability1:
-                finalDamage += playerStats.ability1DamageBonus;
-                finalManaCost += playerStats.ability1ManaCostBonus; // ej. 20 + (-5) = 15
-                break;
-
-            case AbilitySlot.Ability2:
-                finalDamage += playerStats.ability2DamageBonus;
-                finalManaCost += playerStats.ability2ManaCostBonus;
-                break;
+            // Si el día de mañana agregas reducción de cooldown, 
+            // simplemente agregas la línea aquí:
+            // float finalCooldown = ability.cooldown - slotStats.cooldownReduction;
         }
 
         // 6. Asegurarse de que el maná nunca sea negativo

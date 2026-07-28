@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float attacksPerSecond = 1f;
 
     [Header("Steering")]
-    [SerializeField] private bool useFleeBehavior = false; // Para probar Flee más tarde
+    [SerializeField] private bool useFleeBehavior = false; // Flee
 
     [Header("Combat Feedback")]
     [SerializeField] private float attackChargeTime = 0.5f;

@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 8716972187696596512, guid: 85b151f75ea86644e839fb14524d0a1b, type: 3}
     - target: {fileID: 5533066953829325021, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: possibleDrops.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5533066953829325021, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: possibleDrops.Array.data[0]
@@ -120,6 +120,10 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 31d5bd15699200f4eb73c7f014e7f579, type: 2}
+    - target: {fileID: 5533066953829325021, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: possibleDrops.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: ac46a43a35152c24a9ef312d65429ea9, type: 2}
     - target: {fileID: 8368182205672229234, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: maxHealth
       value: 60
@@ -130,15 +134,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3311594916220237979, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2645498248298076017}
+      insertIndex: 6
+      addedObject: {fileID: 2348623075760521856}
+    - targetCorrespondingSourceObject: {fileID: 3311594916220237979, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 3813872528816833446}
   m_SourcePrefab: {fileID: 100100000, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
 --- !u!1 &2456989450297178692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3311594916220237979, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
   m_PrefabInstance: {fileID: 1147816355963306719}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2645498248298076017
+--- !u!114 &2348623075760521856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2456989450297178692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b347dc63d675b04ca77005fd8ff6a1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5910f1a2e4397624da918348133a006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.8
@@ -159,5 +166,17 @@ MonoBehaviour:
   chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   target: {fileID: 0}
   damage: 15
+--- !u!114 &3813872528816833446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456989450297178692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca992116b9bdb94e92b6531b641c03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   miniEnemyPrefab: {fileID: 2456989450297178692, guid: f30a313d1735876458cc27dcab545278, type: 3}
   amountToSpawn: 2

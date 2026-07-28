@@ -163,3 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   lifetime: 3
+  isPlayerProjectile: 1

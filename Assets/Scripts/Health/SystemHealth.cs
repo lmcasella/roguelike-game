@@ -37,6 +37,7 @@ public class SystemHealth : MonoBehaviour
         if (damageAmount < 0) return;
         if (currentHealth <= 0) return;
 
+        // Se resta daño
         currentHealth -= damageAmount;
 
         if (currentHealth < 0)
@@ -102,7 +103,7 @@ public class SystemHealth : MonoBehaviour
         }
     }
 
-    public void ModifyMaxHealth(int amount)
+    public void IncreaseMaxHealth(int amount)
     {
         maxHealth += amount;
 

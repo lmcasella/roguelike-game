@@ -22,3 +22,4 @@ MonoBehaviour:
   damage: 0
   manaCost: 15
   cooldown: 9
+  aimType: 1
