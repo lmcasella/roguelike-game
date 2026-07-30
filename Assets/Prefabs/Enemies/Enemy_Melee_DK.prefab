@@ -96,6 +96,14 @@ PrefabInstance:
       propertyPath: damage
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2744817279114369218, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744817279114369218, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3093996735870272340, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -208,6 +216,18 @@ PrefabInstance:
       propertyPath: possibleDrops.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: ac46a43a35152c24a9ef312d65429ea9, type: 2}
+    - target: {fileID: 7335469807793329930, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335469807793329930, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335469807793329930, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
     - target: {fileID: 8368182205672229234, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: maxHealth
       value: 135

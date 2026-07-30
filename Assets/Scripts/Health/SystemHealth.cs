@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class SystemHealth : MonoBehaviour
 
     private IDamageable target;
     [SerializeField] private int currentHealth;
+
+    public event Action<int, int> OnHealthChanged;
 
     private void Awake()
     {
@@ -39,6 +42,8 @@ public class SystemHealth : MonoBehaviour
 
         // Se resta daño
         currentHealth -= damageAmount;
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         if (currentHealth < 0)
         {
