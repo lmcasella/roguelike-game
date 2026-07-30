@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerMana))]
 public class PlayerAbilities : MonoBehaviour
@@ -82,6 +83,11 @@ public class PlayerAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.currentState != GameManager.GameState.Playing) return;
+
+        // Si el juego no está en estado de juego activo, ignoramos cualquier input
+        if (GameManager.Instance.currentState != GameManager.GameState.Playing) return;
+
         // --- Input ---
 
         // Lógica de Apuntado
