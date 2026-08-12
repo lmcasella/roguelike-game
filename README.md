@@ -28,6 +28,7 @@ El código fue estructurado priorizando la escalabilidad, el mantenimiento y los
 
 * **Movimiento:** `W`, `A`, `S`, `D` / Flechas direccionales
 * **Apuntar y Atacar:** Mouse + Clic Izquierdo
+* **Habilidades:** `Q`, `E`
 * **Dash (Evasión):** `Shift Izquierdo`
 * **Pausa:** `Escape`
 
