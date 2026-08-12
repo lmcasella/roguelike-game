@@ -13,6 +13,14 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: maxDamage
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
+      propertyPath: minDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 568627733470359667, guid: 58adc248a1179d942b1258c241ac0342, type: 3}
       propertyPath: detectionRange
       value: 30
       objectReference: {fileID: 0}

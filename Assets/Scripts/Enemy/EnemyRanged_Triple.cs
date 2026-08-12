@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyRanged_Triple : EnemyAI
 {
     [Header("Triple Shot Config")]
-    [SerializeField] private int projectileDamage = 15;
+    //[SerializeField] private int projectileDamage = 15;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float angleSpread = 15f; // Grados de separación
     [SerializeField] private Transform firePoint;
@@ -38,7 +38,9 @@ public class EnemyRanged_Triple : EnemyAI
         var projScript = proj.GetComponent<Projectile>();
         if (projScript != null)
         {
-            projScript.Initialize(projectileDamage, this.gameObject);
+            int damageToApply = GetRolledDamage();
+
+            projScript.Initialize(damageToApply, this.gameObject);
         }
     }
 }

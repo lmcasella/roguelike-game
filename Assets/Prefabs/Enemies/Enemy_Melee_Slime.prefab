@@ -160,12 +160,13 @@ MonoBehaviour:
   moveSpeed: 2.8
   detectionRange: 30
   attackRange: 1
+  minDamage: 12
+  maxDamage: 15
   attacksPerSecond: 1
   useFleeBehavior: 0
   attackChargeTime: 0.5
   chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   target: {fileID: 0}
-  damage: 15
 --- !u!114 &3813872528816833446
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5aa86cd27007fc4a959c50df6b0c5ae, type: 3}
   m_Name: BasicAttack_DamageUp
   m_EditorClassIdentifier: 
-  description: "Aumenta el da\xF1o del ataque b\xE1sico +10"
+  description: "Aumenta el da\xF1o del ataque b\xE1sico +5"
   icon: {fileID: 0}
   targetAbility: 0
   modifiers:
   - statType: 0
-    amount: 10
+    amount: 5

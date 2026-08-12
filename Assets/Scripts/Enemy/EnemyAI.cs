@@ -11,6 +11,10 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float detectionRange = 10f; // Cuando empieza a perseguir
     [SerializeField] private float attackRange = 1f;    // Cuando ataca
 
+    [Header("Configuración de Daño")]
+    [SerializeField] protected int minDamage = 5;
+    [SerializeField] protected int maxDamage = 10;
+
     [Header("Combat")]
     [SerializeField] private float attacksPerSecond = 1f;
 
@@ -222,6 +226,14 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Ataque
+
+    // Método público o protegido para que cualquier tipo de ataque pida el daño calculado
+    public virtual int GetRolledDamage()
+    {
+        // Random.Range con int exige +1 en el máximo
+        return Random.Range(minDamage, maxDamage + 1);
+    }
+
     protected virtual IEnumerator AttackSequence()
     {
         isPreparingAttack = true;

@@ -8,7 +8,7 @@ public class EnemyMelee_Charger : EnemyAI
     [SerializeField] private float chargeSpeed = 15f;
     [SerializeField] private float chargeDuration = 0.5f;
     [SerializeField] private float impactRadius = 2f;
-    [SerializeField] private int explosionDamage = 20;
+    //[SerializeField] private int explosionDamage = 20;
     [SerializeField] private GameObject impactVFX;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float preparationTime = 0.5f;
@@ -133,7 +133,9 @@ public class EnemyMelee_Charger : EnemyAI
             var health = hit.GetComponentInParent<SystemHealth>();
             if (health != null && !damagedVictims.Contains(health))
             {
-                health.DealDamage(explosionDamage);
+                int damageToApply = GetRolledDamage();
+
+                health.DealDamage(damageToApply);
                 damagedVictims.Add(health);
             }
         }

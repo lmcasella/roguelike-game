@@ -272,6 +272,8 @@ MonoBehaviour:
   moveSpeed: 3
   detectionRange: 30
   attackRange: 4
+  minDamage: 15
+  maxDamage: 20
   attacksPerSecond: 1
   useFleeBehavior: 0
   attackChargeTime: 1
@@ -280,7 +282,6 @@ MonoBehaviour:
   chargeSpeed: 15
   chargeDuration: 0.5
   impactRadius: 1.5
-  explosionDamage: 20
   impactVFX: {fileID: 0}
   playerLayer:
     serializedVersion: 2
