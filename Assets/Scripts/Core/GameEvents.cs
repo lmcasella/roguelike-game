@@ -43,6 +43,14 @@ public static class GameEvents
     public static event Action<BuffEffect, float> OnBuffApplied;
     public static void ReportBuffApplied(BuffEffect buff, float duration) => OnBuffApplied?.Invoke(buff, duration);
 
+    // Evento para actualizar la UI de estadísticas
+    public static event Action<PlayerAbilities, PlayerStats> OnPlayerStatsChanged;
+
+    public static void ReportStatsChanged(PlayerAbilities abilities, PlayerStats stats)
+    {
+        OnPlayerStatsChanged?.Invoke(abilities, stats);
+    }
+
     // --- Evento de Victoria ---
     public static event Action OnBossDied;
     public static void ReportBossDied() => OnBossDied?.Invoke();

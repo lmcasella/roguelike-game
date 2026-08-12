@@ -60,6 +60,13 @@ public class PlayerStats : MonoBehaviour
         {
             targetContainer.AddModifier(mod);
         }
+
+        // Buscamos las habilidades en este mismo objeto y avisamos a la UI
+        PlayerAbilities abilities = GetComponent<PlayerAbilities>();
+        if (abilities != null)
+        {
+            GameEvents.ReportStatsChanged(abilities, this);
+        }
     }
 
     // Método auxiliar para aislar la lógica de selección y mantener limpio el código

@@ -61,6 +61,12 @@ public class PlayerAbilities : MonoBehaviour
                 abilityCooldowns[slot] = -1f; // -1 == Listo
             }
         }
+
+        // Forzamos el estado de juego a Playing si arrancamos directamente en el nivel
+        if (GameManager.Instance.currentState != GameManager.GameState.Playing)
+        {
+            GameManager.Instance.ResumeGame();
+        }
     }
 
     //NOTE:
@@ -77,7 +83,19 @@ public class PlayerAbilities : MonoBehaviour
 
         GameEvents.ReportAbilityEquipped(ability.slot, ability);
 
+        GameEvents.ReportStatsChanged(this, playerStats);
+
         Debug.Log($"Equipped {ability.abilityName} in {ability.slot}");
+    }
+
+    // Método público para obtener la habilidad equipada en un slot específico
+    public Ability GetEquippedAbility(AbilitySlot slot)
+    {
+        if (equippedAbilities.ContainsKey(slot))
+        {
+            return equippedAbilities[slot];
+        }
+        return null; // Retorna nulo si no hay habilidad en ese slot
     }
 
     // Update is called once per frame
@@ -232,7 +250,10 @@ public class PlayerAbilities : MonoBehaviour
 
         // --- Calcular Stats Finales ---
         // 4. Valores base de la habilidad
-        int finalDamage = ability.damage;
+        int finalMinDamage = ability.minDamage;
+        int finalMaxDamage = ability.maxDamage;
+        int rolledDamage;
+
         int finalManaCost = ability.manaCost;
         int finalProjectiles = 1;
 
@@ -242,7 +263,9 @@ public class PlayerAbilities : MonoBehaviour
         if (slotStats != null)
         {
             // Sumamos todos los stats de forma directa y uniforme
-            finalDamage += slotStats.damageBonus;
+            finalMinDamage += slotStats.damageBonus;
+            finalMaxDamage += slotStats.damageBonus;
+
             finalManaCost += slotStats.manaCostReduction;
             finalProjectiles += slotStats.extraProjectiles;
 
@@ -283,6 +306,10 @@ public class PlayerAbilities : MonoBehaviour
             // Rotacion a partir de ese angulo
             Quaternion projectileRotation = Quaternion.Euler(0, 0, angle);
 
+            // Tirar dados
+            // Se usa +1 porque el valor maximo de Random.Range con enteros es "exclusivo"
+            rolledDamage = Random.Range(finalMinDamage, finalMaxDamage + 1);
+
             // 3. Lanzar habilidad
             if (ability.projectilePrefab != null)
             {
@@ -292,7 +319,7 @@ public class PlayerAbilities : MonoBehaviour
                 Projectile projScript = projObj.GetComponent<Projectile>();
                 if (projScript != null)
                 {
-                    projScript.Initialize(finalDamage);
+                    projScript.Initialize(rolledDamage);
                 }
 
                 if (ability.useSound != null)
@@ -308,6 +335,6 @@ public class PlayerAbilities : MonoBehaviour
         }
 
 
-        Debug.Log($"Used ability: {ability.abilityName} (Dmg: {finalDamage}, Cost: {finalManaCost})");
+        Debug.Log($"Used ability: {ability.abilityName} (Dmg: {rolledDamage}, Cost: {finalManaCost})");
     }
 }

@@ -21,7 +21,10 @@ public class Ability : ScriptableObject
 
     [Header("Stats")]
     public GameObject projectilePrefab;
-    public int damage = 10;
+    [Tooltip("Daño mínimo que puede hacer la habilidad")]
+    public int minDamage = 10;
+    [Tooltip("Daño máximo que puede hacer la habilidad")]
+    public int maxDamage = 15;
     public int manaCost = 0;
     public float cooldown = 0.5f;
 
